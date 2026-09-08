@@ -2544,17 +2544,17 @@
         </div>
         
         <div class="view-thumbs">
-          <div class="view-thumb sel">
+          <div class="view-thumb sel" data-view="front">
             <svg viewBox="0 0 24 24"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z" fill="var(--ink)"/></svg>
             Front
           </div>
-          <div class="view-thumb">
+          <div class="view-thumb" data-view="back">
             <svg viewBox="0 0 24 24"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z" fill="var(--ink)"/></svg>
             Back
           </div>
-          <div class="view-thumb">
+          <div class="view-thumb" data-view="sleeve">
             <svg viewBox="0 0 24 24"><path d="M10,22 L10,8 L12,4 L14,4 L14,22 Z" fill="var(--ink)"/></svg>
-            Side
+            Sleeve
           </div>
         </div>
         
@@ -2566,6 +2566,9 @@
           <div id="measureChest" style="position:absolute; border-top: 2px dashed var(--forest); display:flex; justify-content:center;">
             <span style="background:var(--forest); color:#fff; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:10px; transform:translateY(-120%); white-space:nowrap;">C: 40"</span>
           </div>
+          <div id="measureSleeve" style="position:absolute; border-top: 2px dashed var(--forest); display:none; justify-content:center;">
+            <span style="background:var(--forest); color:#fff; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:10px; transform:translateY(-120%); white-space:nowrap;">S: 8"</span>
+          </div>
         </div>
         
         <!-- Existing SVG Preview Stage -->
@@ -2573,6 +2576,7 @@
           <svg id="garmentSvg" viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
             <path class="garment-fill" id="torso-crew" d="M68,330 L68,130 L95,55 C120,85 180,85 205,55 L232,130 L232,330 Z" fill="#1c1c1c" stroke="rgba(0,0,0,0.35)" stroke-width="1.5"/>
             <path class="garment-fill" id="torso-vneck" d="M68,330 L68,130 L95,55 L150,112 L205,55 L232,130 L232,330 Z" fill="#1c1c1c" stroke="rgba(0,0,0,0.35)" stroke-width="1.5" style="display:none"/>
+            <path class="garment-fill" id="torso-back" d="M68,330 L68,130 L95,55 L205,55 L232,130 L232,330 Z" fill="#1c1c1c" stroke="rgba(0,0,0,0.35)" stroke-width="1.5" style="display:none"/>
 
             <path class="garment-fill sleeve" id="sleeve-short-l" d="M95,55 L30,95 L45,140 L68,130 Z" fill="#1c1c1c" stroke="rgba(0,0,0,0.35)" stroke-width="1.5"/>
             <path class="garment-fill sleeve" id="sleeve-short-r" d="M205,55 L270,95 L255,140 L232,130 Z" fill="#1c1c1c" stroke="rgba(0,0,0,0.35)" stroke-width="1.5"/>
@@ -2820,6 +2824,12 @@
           </div>
         </div>
 
+        <!-- 9. Action Buttons -->
+        <div style="margin-top:24px; padding:24px; background:#fff; border:1px solid var(--line); border-radius:12px; display:flex; flex-direction:column; gap:12px;">
+          <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1rem; font-weight:700; cursor:pointer;">CHECKOUT</button>
+          <a href="start.html" class="btn btn-outline" style="width:100%; padding:14px; font-size:1rem; font-weight:700; text-align:center; border: 1px solid var(--ink); color: var(--ink); text-decoration:none; display:inline-block;">GET A QUOTE</a>
+        </div>
+
       </div>
     </div>
 </main>
@@ -2936,9 +2946,17 @@
     var g = state.garment;
 
     // torso
+    var isBack = (state.view === 'back');
+    var isSleeve = (state.view === 'sleeve');
     var vneck = (g === 'tee' && state.neckline === 'vneck');
-    $('torso-crew').style.display = vneck ? 'none' : '';
-    $('torso-vneck').style.display = vneck ? '' : 'none';
+    
+    $('torso-crew').style.display = (vneck || isBack) ? 'none' : '';
+    $('torso-vneck').style.display = (!vneck || isBack) ? 'none' : '';
+    $('torso-back').style.display = isBack ? '' : 'none';
+
+    $('torso-crew').style.opacity = isSleeve ? '0.25' : '1';
+    $('torso-vneck').style.opacity = isSleeve ? '0.25' : '1';
+    $('torso-back').style.opacity = isSleeve ? '0.25' : '1';
 
     // sleeves
     var effectiveSleeve = (g === 'hoodie') ? 'long' : state.sleeve;
@@ -2947,10 +2965,17 @@
     $('sleeve-long-l').style.display  = effectiveSleeve === 'long'  ? '' : 'none';
     $('sleeve-long-r').style.display  = effectiveSleeve === 'long'  ? '' : 'none';
 
+    $('sleeve-short-r').style.opacity = isSleeve ? '0.25' : '1';
+    $('sleeve-long-r').style.opacity = isSleeve ? '0.25' : '1';
+
     // hoodie / polo extras
-    $('hood-group').style.display = g === 'hoodie' ? '' : 'none';
-    $('zip-group').style.display = (g === 'hoodie' && state.hoodCollar === 'zip') ? '' : 'none';
-    $('polo-group').style.display = g === 'polo' ? '' : 'none';
+    $('hood-group').style.display = (g === 'hoodie' && !isBack) ? '' : 'none';
+    $('zip-group').style.display = (g === 'hoodie' && state.hoodCollar === 'zip' && !isBack) ? '' : 'none';
+    $('polo-group').style.display = (g === 'polo' && !isBack) ? '' : 'none';
+    
+    $('hood-group').style.opacity = isSleeve ? '0.25' : '1';
+    $('zip-group').style.opacity = isSleeve ? '0.25' : '1';
+    $('polo-group').style.opacity = isSleeve ? '0.25' : '1';
 
     // collar control blocks
     $('collarRowTee').style.display = g === 'tee' ? '' : 'none';
@@ -2980,19 +3005,25 @@
     overlay.style.left = zone.left; overlay.style.top = zone.top;
     overlay.style.width = zone.width; overlay.style.height = zone.height;
 
-    if(state.source === 'library' && state.libSvg){
-      overlay.innerHTML = state.libSvg;
-      overlay.style.display = 'flex';
-      overlay.style.alignItems = 'center';
-      overlay.style.justifyContent = 'center';
-      overlay.querySelector('svg').style.width = '100%';
-      overlay.querySelector('svg').style.height = '100%';
-    } else if(state.source === 'upload' && state.uploadUrl){
-      overlay.innerHTML = '<img src="' + state.uploadUrl + '" style="width:100%;height:100%;object-fit:contain;">';
-      overlay.style.display = 'block';
-    } else {
-      overlay.innerHTML = '';
+    if(isSleeve) {
       overlay.style.display = 'none';
+      all('.placement-marker').forEach(function(m){ m.style.display = 'none'; });
+    } else {
+      all('.placement-marker').forEach(function(m){ m.style.display = ''; });
+      if(state.source === 'library' && state.libSvg){
+        overlay.innerHTML = state.libSvg;
+        overlay.style.display = 'flex';
+        overlay.style.alignItems = 'center';
+        overlay.style.justifyContent = 'center';
+        overlay.querySelector('svg').style.width = '100%';
+        overlay.querySelector('svg').style.height = '100%';
+      } else if(state.source === 'upload' && state.uploadUrl){
+        overlay.innerHTML = '<img src="' + state.uploadUrl + '" style="width:100%;height:100%;object-fit:contain;">';
+        overlay.style.display = 'block';
+      } else {
+        overlay.innerHTML = '';
+        overlay.style.display = 'none';
+      }
     }
 
     // caption + summary
@@ -3055,21 +3086,39 @@
       var stageBox = $('previewStage').getBoundingClientRect();
       var svgBox = svg.getBoundingClientRect();
       
+      var isBack = state.view === 'back';
+      var isSleeve = state.view === 'sleeve';
+      
       var mLen = $('measureLen');
       var mChest = $('measureChest');
+      var mSleeve = $('measureSleeve');
+      
+      mLen.style.display = isSleeve ? 'none' : 'flex';
+      mChest.style.display = (isSleeve || isBack) ? 'none' : 'flex';
+      mSleeve.style.display = isSleeve ? 'flex' : 'none';
       
       var relativeTop = svgBox.top - stageBox.top;
       var relativeLeft = svgBox.left - stageBox.left;
       
-      mLen.style.height = svgBox.height + 'px';
-      mLen.style.left = (relativeLeft - 10) + 'px';
-      mLen.style.top = relativeTop + 'px';
-      mLen.querySelector('span').textContent = 'L: ' + dims.length + '"';
-      
-      mChest.style.width = svgBox.width + 'px';
-      mChest.style.left = relativeLeft + 'px';
-      mChest.style.top = (relativeTop + svgBox.height * 0.3) + 'px'; // approx chest level
-      mChest.querySelector('span').textContent = 'C: ' + dims.chest + '"';
+      if (!isSleeve) {
+        mLen.style.height = svgBox.height + 'px';
+        mLen.style.left = (relativeLeft - 10) + 'px';
+        mLen.style.top = relativeTop + 'px';
+        mLen.querySelector('span').textContent = 'L: ' + dims.length + '"';
+        
+        if (!isBack) {
+          mChest.style.width = svgBox.width + 'px';
+          mChest.style.left = relativeLeft + 'px';
+          mChest.style.top = (relativeTop + svgBox.height * 0.3) + 'px'; // approx chest level
+          mChest.querySelector('span').textContent = 'C: ' + dims.chest + '"';
+        }
+      } else {
+        // sleeve arrow
+        mSleeve.style.width = (svgBox.width * 0.4) + 'px'; // approx left sleeve width
+        mSleeve.style.left = relativeLeft + 'px';
+        mSleeve.style.top = (relativeTop + svgBox.height * 0.25) + 'px';
+        mSleeve.querySelector('span').textContent = 'S: ' + (dims.sleeve || 8) + '"';
+      }
     }, 450); // wait for CSS transition to finish
   }
 
@@ -3083,6 +3132,15 @@
   
   $('scaleSizeSel').addEventListener('change', function(){
     if (state.scaleOn) updateScale();
+  });
+  
+  all('.view-thumb').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      all('.view-thumb').forEach(function(b){ b.classList.remove('sel'); });
+      btn.classList.add('sel');
+      state.view = btn.getAttribute('data-view');
+      render();
+    });
   });
 
   // garment type
