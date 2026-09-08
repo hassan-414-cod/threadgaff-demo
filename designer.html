@@ -2139,7 +2139,7 @@
     /* Left Side */
     .designer-left {
       flex: 1;
-      padding: 40px 8%;
+      padding: 40px 5%;
       display: flex;
       flex-direction: column;
       background: var(--paper);
@@ -2150,21 +2150,20 @@
     
     .designer-left-content {
       width: 100%;
-      max-width: 650px; /* Constrain the overall width of the left side content */
       display: flex;
       flex-direction: column;
       flex: 1;
     }
     
     .designer-left h2 {
-      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
-      margin-bottom: 8px;
+      font-size: clamp(1.3rem, 1.8vw, 1.8rem);
+      margin-bottom: 4px;
     }
     
     .designer-left p.sub {
-      font-size: 1rem;
+      font-size: 0.85rem;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     .preview-box {
@@ -2183,7 +2182,7 @@
         linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
       background-size: 30px 30px;
       min-height: 400px;
-      max-height: 500px; /* Prevent it from getting too tall */
+      max-height: 600px; 
     }
     
     .preview-tag {
@@ -2202,6 +2201,7 @@
       gap: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
       letter-spacing: 0.05em;
+      z-index: 5;
     }
     .preview-tag::before {
       content: "";
@@ -2225,19 +2225,22 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+      z-index: 5;
     }
     .expand-btn svg { width: 14px; height: 14px; stroke: var(--ink); }
 
     .view-thumbs {
+      position: absolute;
+      left: 16px;
+      top: 64px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 12px;
-      margin-top: 16px;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 5;
     }
     .view-thumb {
-      width: 64px;
-      height: 74px;
+      width: 50px;
+      height: 60px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -2245,16 +2248,17 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 0.6rem;
+      font-size: 0.55rem;
       font-weight: 600;
       color: var(--ink);
       cursor: pointer;
       transition: border-color 0.2s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     .view-thumb.sel {
       border: 2px solid var(--forest);
     }
-    .view-thumb svg { width: 28px; height: 28px; margin-bottom: 4px; fill: var(--ink); }
+    .view-thumb svg { width: 22px; height: 22px; margin-bottom: 2px; fill: var(--ink); }
     
     .disclaimer {
       text-align: center;
@@ -2269,7 +2273,7 @@
 
     /* Right Side */
     .designer-right {
-      width: 580px; /* Increased from 500px */
+      flex: 1; /* Make it a 50/50 split */
       background: #fbfaf8;
       border-left: 1px solid #e8e4db;
       padding: 0;
@@ -2758,19 +2762,39 @@
           </div>
         </div>
 
-        <!-- hidden elements to satisfy the JS script -->
-        <div style="display:none;">
-           <span id="capSpec">TEE — CREW — SHORT — INK BLACK</span>
-           <span id="capPlacement">FRONT CHEST</span>
-           <span id="sumGarment">T-Shirt</span>
-           <span id="sumCollar">Crew Neck</span>
-           <span id="sumSleeve">Short</span>
-           <span id="sumColor">Ink Black</span>
-           <span id="sumSource">Upload — no file yet</span>
-           <span id="sumPlacement">Front Chest</span>
-           <span id="sumQty">0 units</span>
-           <span id="qtyTotal">0</span>
-           <table class="qty-table"><tr><td><input type="number" min="0" value="0" data-size="S"></td></tr></table>
+        <!-- 7. Order Summary -->
+        <div class="config-block" style="margin-top:40px; padding:24px; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.02);">
+          <div style="font-size:1.1rem; font-weight:700; margin-bottom:16px; border-bottom:1px solid var(--line); padding-bottom:12px;">ORDER SUMMARY</div>
+          
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
+            <span style="color:var(--muted);">Product Type:</span>
+            <span style="font-weight:600;"><span id="sumGarment">T-Shirt</span> &middot; <span id="sumCollar">Crew Neck</span> &middot; <span id="sumSleeve">Short</span></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
+            <span style="color:var(--muted);">Base Colour:</span>
+            <span id="sumColor" style="font-weight:600;">Ink Black</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
+            <span style="color:var(--muted);">Branding:</span>
+            <span style="font-weight:600; text-align:right;"><span id="sumPlacement">Front Chest</span><br><span id="sumSource" style="font-size:0.75rem; color:var(--muted); font-weight:400;">Upload — no file yet</span></span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.85rem;">
+            <span style="color:var(--muted);">Total Units:</span>
+            <span id="sumQty" style="font-weight:600;">0 units</span>
+          </div>
+          
+          <div style="border-top:1px dashed var(--line); padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
+            <span style="font-weight:700; font-size:0.9rem;">Estimated Cost</span>
+            <span style="font-weight:700; font-size:1.1rem; color:var(--forest);">--</span>
+          </div>
+
+          <!-- Hidden elements required by JS -->
+          <div style="display:none;">
+             <span id="capSpec">TEE — CREW — SHORT — INK BLACK</span>
+             <span id="capPlacement">FRONT CHEST</span>
+             <span id="qtyTotal">0</span>
+             <table class="qty-table"><tr><td><input type="number" min="0" value="0" data-size="S"></td></tr></table>
+          </div>
         </div>
 
       </div>
