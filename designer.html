@@ -2132,30 +2132,39 @@
 
     .designer-split {
       display: flex;
-      height: calc(100vh - 60px); /* Adjust for header if needed */
+      height: calc(100vh - 120px); /* Adjust for header */
       background: var(--paper);
     }
 
     /* Left Side */
     .designer-left {
       flex: 1;
-      padding: 60px;
+      padding: 40px 8%;
       display: flex;
       flex-direction: column;
       background: var(--paper);
       overflow-y: auto;
       padding-bottom: 120px;
+      align-items: center; /* Center the box if it has max-width */
+    }
+    
+    .designer-left-content {
+      width: 100%;
+      max-width: 650px; /* Constrain the overall width of the left side content */
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
     
     .designer-left h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
+      font-size: clamp(1.8rem, 2.5vw, 2.5rem);
       margin-bottom: 8px;
     }
     
     .designer-left p.sub {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: var(--muted);
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
     .preview-box {
@@ -2173,18 +2182,19 @@
         linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
       background-size: 30px 30px;
-      min-height: 500px;
+      min-height: 400px;
+      max-height: 500px; /* Prevent it from getting too tall */
     }
     
     .preview-tag {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: 16px;
+      left: 16px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 20px;
-      padding: 6px 14px;
-      font-size: 0.7rem;
+      padding: 6px 12px;
+      font-size: 0.65rem;
       font-weight: 700;
       color: var(--ink);
       display: flex;
@@ -2203,10 +2213,10 @@
 
     .expand-btn {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 36px;
-      height: 36px;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -2216,18 +2226,18 @@
       cursor: pointer;
       box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
-    .expand-btn svg { width: 16px; height: 16px; stroke: var(--ink); }
+    .expand-btn svg { width: 14px; height: 14px; stroke: var(--ink); }
 
     .view-thumbs {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 16px;
-      margin-top: 24px;
+      gap: 12px;
+      margin-top: 16px;
     }
     .view-thumb {
-      width: 74px;
-      height: 84px;
+      width: 64px;
+      height: 74px;
       background: #fff;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -2235,7 +2245,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 600;
       color: var(--ink);
       cursor: pointer;
@@ -2244,22 +2254,22 @@
     .view-thumb.sel {
       border: 2px solid var(--forest);
     }
-    .view-thumb svg { width: 32px; height: 32px; margin-bottom: 6px; fill: var(--ink); }
+    .view-thumb svg { width: 28px; height: 28px; margin-bottom: 4px; fill: var(--ink); }
     
     .disclaimer {
       text-align: center;
-      margin-top: 20px;
-      font-size: 0.75rem;
+      margin-top: 16px;
+      font-size: 0.7rem;
       color: var(--muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
     }
 
     /* Right Side */
     .designer-right {
-      width: 500px;
+      width: 580px; /* Increased from 500px */
       background: #fbfaf8;
       border-left: 1px solid #e8e4db;
       padding: 0;
@@ -2530,6 +2540,7 @@
     
     <!-- LEFT SIDE: Preview -->
     <div class="designer-left">
+      <div class="designer-left-content">
       <span style="font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; color:var(--muted); margin-bottom:8px;">CUSTOM DESIGNER</span>
       <h2>DESIGN YOUR GARMENT</h2>
       <p class="sub">Bring your vision to life. Customize every detail for your brand.</p>
@@ -2607,6 +2618,7 @@
       <div class="disclaimer">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
         Colours and textures are a close representation and may vary slightly in production.
+      </div>
       </div>
     </div>
 
