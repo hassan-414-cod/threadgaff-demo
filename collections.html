@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Library — Threadgaff</title>
+<meta name="description" content="Browse ready-made designs across streetwear, activewear, corporate wear, outerwear and accessories, then customise any of them.">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --ink:#191d1a;
+  --paper:#f1f0e9;
+  --panel:#fffdf8;
+  --line:#d9d6c7;
+  --muted:#66665c;
+  --gold:#c98a1f;
+  --gold-deep:#8a5f14;
+  --forest:#33453a;
+  --forest-tint:#e7ebe4;
+  --radius-s:2px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *,*::before,*::after{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3,h4{
+  font-family:'Big Shoulders Display',sans-serif;
+  font-weight:700;
+  line-height:0.96;
+  margin:0;
+  letter-spacing:0.2px;
+}
+h1{font-size:clamp(2.6rem,5.5vw,4.6rem); font-weight:800;}
+h2{font-size:clamp(1.9rem,3.4vw,2.7rem);}
+h3{font-size:1.4rem;}
+
+p{margin:0 0 1em; max-width:62ch;}
+a{color:inherit;}
+img{max-width:100%; display:block;}
+
+.mono{font-family:'IBM Plex Mono',monospace;}
+
+.wrap{
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 32px;
+}
+
+/* -------- buttons -------- */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:13px 24px;
+  border-radius:var(--radius-s);
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:0.95rem;
+  border:1px solid transparent;
+  cursor:pointer;
+  text-decoration:none;
+  transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.btn-primary{background:var(--gold); color:var(--ink); border-color:var(--gold);}
+.btn-primary:hover{background:var(--gold-deep); border-color:var(--gold-deep); color:#fff;}
+.btn-outline{background:transparent; color:var(--ink); border-color:var(--ink);}
+.btn-outline:hover{background:var(--ink); color:var(--paper);}
+.btn-outline-light{background:transparent; color:var(--paper); border-color:var(--paper);}
+.btn-outline-light:hover{background:var(--paper); color:var(--ink);}
+.btn-block{width:100%; justify-content:center;}
+.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--gold-deep); outline-offset:2px;
+}
+
+/* -------- nav -------- */
+.site-header{
+  position:sticky; top:0; z-index:50;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:20px 32px;
+  max-width:1180px; margin:0 auto;
+  gap:24px; flex-wrap:wrap;
+}
+.logo{
+  font-family:'Big Shoulders Display',sans-serif;
+  font-weight:800; font-size:1.5rem;
+  text-decoration:none; color:var(--ink);
+  letter-spacing:0.5px;
+  display:flex; align-items:center; gap:9px;
+}
+.logo-mark{width:20px; height:20px; flex:none;}
+.nav-links{
+  display:flex; gap:28px; list-style:none; margin:0; padding:0;
+  flex-wrap:wrap; align-items:center;
+}
+.nav-links a{
+  text-decoration:none; color:var(--muted); font-weight:500; font-size:0.94rem;
+  padding-bottom:3px; border-bottom:2px solid transparent;
+}
+.nav-links a:hover{color:var(--ink);}
+.nav-links a.active{color:var(--ink); border-bottom-color:var(--gold);}
+.nav-cta{flex:none;}
+
+/* -------- hero spec-card (garment preview frame) -------- */
+.spec-card{
+  position:relative;
+  background:var(--panel);
+  border:1px solid var(--line);
+  padding:28px;
+}
+.spec-card::before,.spec-card::after,.spec-card .tick-tl,.spec-card .tick-br{
+  content:""; position:absolute; width:14px; height:14px;
+  border:2px solid var(--ink);
+}
+.spec-card::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
+.spec-card::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
+.spec-card-tag{
+  position:absolute; top:12px; right:16px;
+  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted);
+}
+
+/* -------- sections -------- */
+.section{padding:88px 0;}
+.section-tight{padding:56px 0;}
+.section-head{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
+  margin-bottom:40px; flex-wrap:wrap;
+}
+.section-head p{margin:10px 0 0; color:var(--muted);}
+.hr{border:none; border-top:1px solid var(--line); margin:0;}
+
+/* -------- hero -------- */
+.hero{padding:70px 0 90px;}
+.hero-grid{
+  display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center;
+}
+.hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+.hero-lede{color:var(--muted); font-size:1.08rem; max-width:46ch;}
+
+/* -------- data strip -------- */
+.data-strip{
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  padding:26px 0;
+}
+.data-row{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+}
+.data-item .num{font-family:'IBM Plex Mono',monospace; font-size:1.7rem; color:var(--gold-deep); display:block;}
+.data-item .label{font-size:0.86rem; color:var(--muted);}
+
+/* -------- tile grid (design library) -------- */
+.tile-grid{
+  display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
+}
+.tile{
+  border:1px solid var(--line); background:var(--panel);
+  display:flex; flex-direction:column; text-decoration:none; color:var(--ink);
+  transition:border-color 0.15s ease;
+}
+.tile:hover{border-color:var(--ink);}
+.tile-swatch{
+  aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;
+  border-bottom:1px solid var(--line);
+}
+.tile-swatch svg{width:58%;}
+.tile-body{padding:16px 16px 18px;}
+.tile-cat{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); display:block; margin-bottom:6px;}
+.tile-name{font-weight:600; font-size:1.02rem;}
+.tile-cta{font-size:0.86rem; color:var(--gold-deep); margin-top:10px; font-weight:600;}
+.tile.wide{grid-column:span 2;}
+.tile.wide .tile-swatch{aspect-ratio:auto; height:100%; min-height:180px;}
+
+/* -------- two path panels -------- */
+.path-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
+.path-panel{
+  border:1px solid var(--line); background:var(--panel);
+  padding:34px; display:flex; flex-direction:column; gap:16px;
+}
+.path-panel h3{font-size:1.7rem;}
+.path-panel ul{margin:0; padding-left:18px; color:var(--muted); font-size:0.95rem;}
+.path-panel li{margin-bottom:6px;}
+.path-index{font-family:'IBM Plex Mono',monospace; color:var(--gold-deep); font-size:0.85rem;}
+
+/* -------- segments strip -------- */
+.segment-list{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line);}
+.segment-item{
+  padding:26px 22px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);
+}
+.segment-item:last-child{border-right:none;}
+.segment-item h4{font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:1.02rem; margin-bottom:8px;}
+.segment-item p{font-size:0.9rem; color:var(--muted); margin:0;}
+
+/* -------- dark band -------- */
+.band-dark{background:var(--ink); color:var(--paper);}
+.band-dark .muted{color:#a9a99c;}
+.band-dark .hr{border-top-color:#3a3f38;}
+
+/* -------- footer -------- */
+.site-footer{border-top:1px solid var(--line); padding:56px 0 34px;}
+.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:40px;}
+.footer-col h5{font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin:0 0 14px; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
+.footer-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
+.footer-col a{text-decoration:none; color:var(--ink); font-size:0.92rem;}
+.footer-col a:hover{color:var(--gold-deep);}
+.footer-bottom{display:flex; justify-content:space-between; color:var(--muted); font-size:0.82rem; flex-wrap:wrap; gap:10px;}
+
+/* -------- generic content blocks -------- */
+.kicker{font-size:0.95rem; color:var(--gold-deep); font-weight:600; margin-bottom:10px;}
+.card-plain{border:1px solid var(--line); background:var(--panel); padding:28px;}
+.two-col{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
+.list-clean{list-style:none; margin:0; padding:0;}
+.list-clean li{padding:14px 0; border-bottom:1px solid var(--line); display:flex; gap:14px;}
+.list-clean li:first-child{padding-top:0;}
+
+/* -------- process steps (How It Works) -------- */
+.step-row{display:grid; grid-template-columns:64px 1fr 120px; gap:22px; padding:26px 0; border-bottom:1px solid var(--line); align-items:start;}
+.step-row:first-child{border-top:1px solid var(--line);}
+.step-num{font-family:'IBM Plex Mono',monospace; font-size:1.2rem; color:var(--gold-deep);}
+.step-time{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--muted); text-align:right;}
+
+/* -------- solutions segments (full page) -------- */
+.solution-block{padding:52px 0; border-bottom:1px solid var(--line);}
+.solution-block:last-of-type{border-bottom:none;}
+.solution-grid{display:grid; grid-template-columns:0.9fr 1.4fr; gap:44px;}
+.solution-meta{font-family:'IBM Plex Mono',monospace; font-size:0.82rem; color:var(--muted); margin-bottom:10px;}
+
+/* ================= DESIGNER TOOL ================= */
+.designer-layout{display:grid; grid-template-columns:1fr 1.05fr; gap:40px; align-items:start;}
+.preview-pane{position:sticky; top:96px;}
+.preview-stage{
+  aspect-ratio:1/1.05; display:flex; align-items:center; justify-content:center;
+  background:
+    linear-gradient(var(--line) 1px, transparent 1px) 0 0/28px 28px,
+    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/28px 28px,
+    var(--panel);
+  position:relative; overflow:hidden;
+}
+.preview-stage svg{width:66%; max-width:280px;}
+.placement-marker{
+  position:absolute; border:1.5px dashed var(--gold-deep);
+  background:rgba(201,138,31,0.08);
+  display:none; align-items:center; justify-content:center;
+  font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:var(--gold-deep);
+  text-align:center; padding:2px;
+}
+.placement-marker.on{display:flex;}
+.upload-art-img{position:absolute; object-fit:contain; display:none;}
+.upload-art-img.on{display:block;}
+.preview-caption{display:flex; justify-content:space-between; margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted);}
+
+.control-panel{display:flex; flex-direction:column; gap:34px;}
+.control-block{border-bottom:1px solid var(--line); padding-bottom:28px;}
+.control-block:last-child{border-bottom:none;}
+.control-label{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;}
+.control-label span.step{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted);}
+.control-label h4{font-size:1.05rem; font-weight:600; font-family:'IBM Plex Sans',sans-serif;}
+
+.option-row{display:flex; flex-wrap:wrap; gap:10px;}
+.opt-btn{
+  padding:9px 16px; border:1px solid var(--line); background:var(--panel);
+  font-family:'IBM Plex Sans',sans-serif; font-size:0.88rem; font-weight:500;
+  cursor:pointer; color:var(--ink); border-radius:var(--radius-s);
+}
+.opt-btn:hover{border-color:var(--ink);}
+.opt-btn.sel{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+.opt-btn[disabled]{opacity:0.35; cursor:not-allowed;}
+
+.swatch-row{display:flex; flex-wrap:wrap; gap:12px;}
+.swatch{
+  width:36px; height:36px; border-radius:50%; cursor:pointer;
+  border:2px solid transparent; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.15);
+  position:relative;
+}
+.swatch.sel::after{
+  content:""; position:absolute; inset:-5px; border:2px solid var(--ink); border-radius:50%;
+}
+
+.source-tabs{display:flex; gap:2px; margin-bottom:16px;}
+.source-tab{flex:1; padding:11px; text-align:center; background:var(--panel); border:1px solid var(--line); cursor:pointer; font-size:0.88rem; font-weight:600;}
+.source-tab.sel{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+.source-pane{display:none;}
+.source-pane.on{display:block;}
+.lib-thumb-row{display:grid; grid-template-columns:repeat(5,1fr); gap:8px;}
+.lib-thumb{aspect-ratio:1; border:1px solid var(--line); cursor:pointer; display:flex; align-items:center; justify-content:center; background:var(--panel);}
+.lib-thumb:hover{border-color:var(--ink);}
+.lib-thumb.sel{border-color:var(--gold-deep); border-width:2px;}
+.lib-thumb svg{width:60%;}
+.upload-drop{
+  border:1.5px dashed var(--line); padding:26px; text-align:center; cursor:pointer; font-size:0.9rem; color:var(--muted);
+}
+.upload-drop:hover{border-color:var(--ink); color:var(--ink);}
+.upload-drop input{display:none;}
+.file-name{margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--gold-deep);}
+
+.qty-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
+.qty-table th{text-align:left; font-weight:600; font-size:0.78rem; color:var(--muted); padding-bottom:8px; border-bottom:1px solid var(--line);}
+.qty-table td{padding:10px 0; border-bottom:1px solid var(--line);}
+.qty-table input{width:64px; padding:7px 8px; border:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:0.9rem; border-radius:var(--radius-s);}
+.qty-total{display:flex; justify-content:space-between; padding-top:12px; font-weight:600;}
+
+.summary-box{background:var(--forest-tint); border:1px solid var(--line); padding:22px;}
+.summary-box dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:0.88rem;}
+.summary-box dt{color:var(--muted);}
+.summary-box dd{margin:0; font-weight:600; text-align:right;}
+
+/* -------- forms (quote page) -------- */
+.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+.field{display:flex; flex-direction:column; gap:7px;}
+.field.full{grid-column:1/-1;}
+.field label{font-size:0.86rem; font-weight:600;}
+.field input,.field select,.field textarea{
+  padding:12px 13px; border:1px solid var(--line); background:var(--panel);
+  font-family:'IBM Plex Sans',sans-serif; font-size:0.95rem; color:var(--ink); border-radius:var(--radius-s);
+}
+.field textarea{resize:vertical; min-height:110px;}
+
+/* -------- responsive -------- */
+@media (max-width:960px){
+  .hero-grid,.two-col,.path-grid,.solution-grid,.designer-layout{grid-template-columns:1fr;}
+  .data-row{grid-template-columns:repeat(2,1fr);}
+  .tile-grid{grid-template-columns:repeat(2,1fr);}
+  .tile.wide{grid-column:span 2;}
+  .segment-list{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .preview-pane{position:static;}
+}
+@media (max-width:600px){
+  .wrap{padding:0 20px;}
+  .nav{padding:16px 20px;}
+  .tile-grid,.segment-list{grid-template-columns:1fr;}
+  .tile.wide{grid-column:span 1;}
+  .data-row{grid-template-columns:1fr 1fr;}
+  .form-grid{grid-template-columns:1fr;}
+  .step-row{grid-template-columns:40px 1fr; }
+  .step-time{grid-column:2; text-align:left; padding-top:4px;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo">
+      <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M4 12h9M13 12l-3-3M13 12l-3 3M17 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      THREADGAFF
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="">Home</a></li>
+      <li><a href="collections.html" class="active">Design Library</a></li>
+      <li><a href="designer.html" class="">Custom Designer</a></li>
+      <li><a href="how-it-works.html" class="">How It Works</a></li>
+      <li><a href="solutions.html" class="">Solutions</a></li>
+      <li><a href="about.html" class="">About</a></li>
+    </ul>
+    <a href="quote.html" class="btn btn-primary nav-cta">Get a Quote</a>
+  </nav>
+</header>
+
+<main>
+  <section class="section-tight">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Design Library</h2>
+        <p>Every design here opens directly in the Custom Designer, pre-loaded and ready to adjust.</p>
+      </div>
+
+      <div class="option-row" id="filterRow" style="margin-bottom:32px;">
+        <button class="opt-btn sel" data-filter="all">All</button>
+        <button class="opt-btn" data-filter="streetwear">Streetwear</button>
+        <button class="opt-btn" data-filter="activewear">Activewear</button>
+        <button class="opt-btn" data-filter="corporate">Corporate &amp; Uniforms</button>
+        <button class="opt-btn" data-filter="outerwear">Outerwear</button>
+        <button class="opt-btn" data-filter="accessories">Accessories</button>
+      </div>
+
+      <div class="tile-grid" id="tileGrid">
+
+        <a href="designer.html?type=tee&source=library&name=Ridge%20Tee" class="tile" data-cat="streetwear">
+          <div class="tile-swatch" style="background:#efe7d8;"><svg viewBox="0 0 120 120"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">STREETWEAR</span><div class="tile-name">Ridge Tee</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=tee&source=library&name=Signal%20Tee" class="tile" data-cat="streetwear">
+          <div class="tile-swatch" style="background:#efe7d8;"><svg viewBox="0 0 120 120"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">STREETWEAR</span><div class="tile-name">Signal Tee</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=hoodie&source=library&name=Fieldwork%20Hoodie" class="tile wide" data-cat="activewear">
+          <div class="tile-swatch" style="background:#e2e6de;"><svg viewBox="0 0 120 120" style="width:34%;"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M46,14 Q60,-2 74,14" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="48" y="76" width="24" height="16" rx="2" fill="none" stroke="var(--ink)" stroke-width="2.6"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">ACTIVEWEAR</span><div class="tile-name">Fieldwork Hoodie</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=hoodie&source=library&name=Trail%20Hoodie" class="tile" data-cat="activewear">
+          <div class="tile-swatch" style="background:#e2e6de;"><svg viewBox="0 0 120 120"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M46,14 Q60,-2 74,14" fill="none" stroke="var(--ink)" stroke-width="3"/><rect x="48" y="76" width="24" height="16" rx="2" fill="none" stroke="var(--ink)" stroke-width="2.6"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">ACTIVEWEAR</span><div class="tile-name">Trail Hoodie</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=polo&source=library&name=Bureau%20Polo" class="tile" data-cat="corporate">
+          <div class="tile-swatch" style="background:#e7e2d3;"><svg viewBox="0 0 120 120"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M50,18 L60,14 L56,28 Z" fill="none" stroke="var(--ink)" stroke-width="2.4"/><path d="M70,18 L60,14 L64,28 Z" fill="none" stroke="var(--ink)" stroke-width="2.4"/><line x1="60" y1="30" x2="60" y2="46" stroke="var(--ink)" stroke-width="2.2"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">CORPORATE &amp; UNIFORMS</span><div class="tile-name">Bureau Polo</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=polo&source=library&name=Roster%20Polo" class="tile" data-cat="corporate">
+          <div class="tile-swatch" style="background:#e7e2d3;"><svg viewBox="0 0 120 120"><path d="M40,20 L55,10 Q60,26 65,10 L80,20 L96,40 L82,48 L82,104 L38,104 L38,48 L24,40 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><path d="M50,18 L60,14 L56,28 Z" fill="none" stroke="var(--ink)" stroke-width="2.4"/><path d="M70,18 L60,14 L64,28 Z" fill="none" stroke="var(--ink)" stroke-width="2.4"/><line x1="60" y1="30" x2="60" y2="46" stroke="var(--ink)" stroke-width="2.2"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">CORPORATE &amp; UNIFORMS</span><div class="tile-name">Roster Polo</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=tee&source=library&name=Utility%20Jacket" class="tile wide" data-cat="outerwear">
+          <div class="tile-swatch" style="background:#e8e4da;"><svg viewBox="0 0 120 120" style="width:34%;"><path d="M38,22 L55,12 L65,12 L82,22 L98,42 L84,50 L84,106 L36,106 L36,50 L22,42 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/><rect x="52" y="10" width="16" height="8" fill="none" stroke="var(--ink)" stroke-width="2.4"/><line x1="60" y1="20" x2="60" y2="104" stroke="var(--ink)" stroke-width="2.4"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">OUTERWEAR</span><div class="tile-name">Utility Jacket</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+        <a href="designer.html?type=tee&source=library&name=Event%20Cap" class="tile" data-cat="accessories">
+          <div class="tile-swatch" style="background:#efe9dd;"><svg viewBox="0 0 120 120"><path d="M20,70 Q60,26 100,70 L100,76 L20,76 Z" fill="none" stroke="var(--ink)" stroke-width="3.2" stroke-linejoin="round"/><path d="M64,68 L112,80 L100,88 L64,76 Z" fill="none" stroke="var(--ink)" stroke-width="3"/></svg></div>
+          <div class="tile-body"><span class="tile-cat mono">ACCESSORIES</span><div class="tile-name">Event Cap</div><div class="tile-cta">Customise this</div></div>
+        </a>
+
+      </div>
+
+      <div class="card-plain" style="margin-top:36px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+        <div>
+          <h3 style="margin-bottom:6px;">Can't find what you're picturing?</h3>
+          <p style="margin:0; color:var(--muted);">Upload your own artwork instead — it goes into the same configurator.</p>
+        </div>
+        <a href="designer.html?source=upload" class="btn btn-primary">Upload Your Own Design</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    var filterBtns = document.querySelectorAll('#filterRow .opt-btn');
+    var tiles = document.querySelectorAll('#tileGrid .tile');
+    filterBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        filterBtns.forEach(function(b){ b.classList.remove('sel'); });
+        btn.classList.add('sel');
+        var f = btn.getAttribute('data-filter');
+        tiles.forEach(function(t){
+          t.style.display = (f === 'all' || t.getAttribute('data-cat') === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="logo" style="margin-bottom:14px;">
+          <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M4 12h9M13 12l-3-3M13 12l-3 3M17 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          THREADGAFF
+        </a>
+        <p style="color:var(--muted); font-size:0.92rem; max-width:34ch;">Private label apparel manufacturing, designed piece by piece and produced to order.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Site</h5>
+        <ul>
+          <li><a href="collections.html">Design Library</a></li>
+          <li><a href="designer.html">Custom Designer</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="about.html">About Threadgaff</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Solutions</h5>
+        <ul>
+          <li><a href="solutions.html#brands">Brands &amp; Retailers</a></li>
+          <li><a href="solutions.html#corporates">Corporates &amp; Schools</a></li>
+          <li><a href="solutions.html#events">Events &amp; Teams</a></li>
+          <li><a href="solutions.html#importers">Importers &amp; Startups</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get in touch</h5>
+        <ul>
+          <li><a href="quote.html">Request a quote</a></li>
+          <li><a href="mailto:hello@threadgaff.com">hello@threadgaff.com</a></li>
+          <li><a href="tel:+920000000000">+92 000 000 0000</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="hr">
+    <div class="footer-bottom" style="margin-top:22px;">
+      <span>© 2026 Threadgaff. Demo template — not a live production site.</span>
+      <span>Lahore, Pakistan</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
