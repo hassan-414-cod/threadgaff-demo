@@ -2127,23 +2127,20 @@
     /* -------- END FULL BLEED HERO -------- */
   
     /* -------- SPLIT DESIGNER OVERRIDES -------- */
-    .site-footer { display: none !important; }
-    body { overflow-y: hidden; }
-
     .designer-split {
       display: flex;
-      height: calc(100vh - 120px); /* Adjust for header */
+      min-height: calc(100vh - 120px);
       background: var(--paper);
     }
 
     /* Left Side */
     .designer-left {
       flex: 0 0 40%;
-      padding: 40px 5% 0;
+      padding: 40px 5% 60px;
       display: flex;
       flex-direction: column;
       background: var(--paper);
-      align-items: center; /* Center the box if it has max-width */
+      align-items: center;
     }
     
     .designer-left-content {
@@ -2151,7 +2148,6 @@
       display: flex;
       flex-direction: column;
       flex: 1;
-      height: 100%;
     }
     
     .designer-left h2 {
@@ -2272,12 +2268,10 @@
 
     /* Right Side */
     .designer-right {
-      flex: 1; /* Make it a 50/50 split */
-      background: #fbfaf8;
+      flex: 1;
+      background: var(--paper);
       border-left: 1px solid #e8e4db;
       padding: 0;
-      overflow-y: auto;
-      padding-bottom: 120px;
       display: flex;
       flex-direction: column;
     }
@@ -2288,10 +2282,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #fbfaf8;
-      position: sticky;
-      top: 0;
-      z-index: 10;
+      background: var(--paper);
     }
     .dr-header h4 { font-size: 0.75rem; color: var(--muted); }
     .dr-header span { font-size: 0.7rem; font-weight: 700; }
