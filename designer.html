@@ -2419,6 +2419,7 @@
     }
 
 </style>
+<script src="assets/js/garment-configs.js"></script>
 </head>
 <body>
 <header class="site-header">
@@ -2520,8 +2521,8 @@
     <div class="designer-left">
       <div class="designer-left-content">
       <span style="font-family:'Montserrat',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:0.1em; color:var(--muted); margin-bottom:8px;">CUSTOM DESIGNER</span>
-      <h2>DESIGN YOUR GARMENT</h2>
-      <p class="sub">Bring your vision to life. Customize every detail for your brand.</p>
+      <h2 id="categoryTitle">DESIGN YOUR GARMENT</h2>
+      <p class="sub" id="categorySubtitle">Bring your vision to life. Customize every detail for your brand.</p>
 
       <div class="preview-box">
         <div class="preview-tag">LIVE PREVIEW</div>
@@ -2873,9 +2874,79 @@
   </footer>
 
 <script>
-(function(){
+  // ── Read URL param and load category config ──
+  var _params = new URLSearchParams(window.location.search);
+  var _catKey = _params.get('category') || 'tshirts';
+  var _cfg = (typeof GARMENT_CONFIGS !== 'undefined' && GARMENT_CONFIGS[_catKey]) ? GARMENT_CONFIGS[_catKey] : null;
+
+  if (_cfg) {
+    // Update page title and heading
+    document.title = _cfg.title + ' Designer — Threadgaff';
+    var _titleEl = document.getElementById('categoryTitle');
+    if (_titleEl) _titleEl.textContent = 'DESIGN YOUR ' + _cfg.title.toUpperCase();
+    var _subEl = document.getElementById('categorySubtitle');
+    if (_subEl) _subEl.textContent = _cfg.subtitle;
+
+    // Rebuild garment type buttons
+    var _garmentRow = document.getElementById('garmentRow');
+    if (_garmentRow && _cfg.garmentTypes.length) {
+      _garmentRow.innerHTML = '';
+      _cfg.garmentTypes.forEach(function(gt, i) {
+        var b = document.createElement('button');
+        b.className = 'opt-btn' + (i === 0 ? ' sel' : '');
+        b.setAttribute('data-garment', gt.id);
+        b.innerHTML = gt.label;
+        _garmentRow.appendChild(b);
+      });
+    }
+
+    // Rebuild qty size slots using config sizes
+    var _qtySlotsTop = document.querySelector('.dr-header .qty-table');
+    if (_qtySlotsTop) {
+      _qtySlotsTop.innerHTML = '';
+      _cfg.sizes.forEach(function(sz) {
+        var d = document.createElement('div');
+        d.style.cssText = 'background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;';
+        d.innerHTML = '<span style="font-size:0.6rem; font-weight:700; color:var(--muted);">' + sz + '</span><input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">';
+        _qtySlotsTop.appendChild(d);
+      });
+    }
+
+    // Lock/unlock sleeve based on config
+    if (_cfg.sleeveDefaultLocked) {
+      var _sleeveRow = document.getElementById('sleeveRow');
+      if (_sleeveRow) _sleeveRow.style.display = 'none';
+      var _sleeveBlock = _sleeveRow ? _sleeveRow.closest('.config-block') : null;
+      if (_sleeveBlock) _sleeveBlock.style.display = 'none';
+    }
+
+    // Hide neckline block for bottom-only garments
+    if (!_cfg.necklineOptions || Object.keys(_cfg.necklineOptions).length === 0) {
+      ['collarRowTee','collarRowHoodie','collarRowPolo'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) { var bl = el.closest('.config-block'); if (bl) bl.style.display = 'none'; }
+      });
+    }
+
+    // Update SIZE_CHARTS from config (done below after SIZE_CHARTS is declared)
+    // _cfg.sizeChart is applied after the SIZE_CHARTS variable is set up
+
+    // Populate scale size selector
+    var _scaleSel = document.getElementById('scaleSizeSel');
+    if (_scaleSel) {
+      _scaleSel.innerHTML = '';
+      _cfg.sizes.forEach(function(sz, i) {
+        var opt = document.createElement('option');
+        opt.value = sz;
+        opt.textContent = sz;
+        if (i === Math.floor(_cfg.sizes.length / 2)) opt.selected = true;
+        _scaleSel.appendChild(opt);
+      });
+    }
+  }
+
   var state = {
-    garment: 'tee',
+    garment: (_cfg && _cfg.defaultGarment) || 'tee',
     neckline: 'crew',
     hoodCollar: 'pullover',
     sleeve: 'short',
@@ -2888,6 +2959,7 @@
     placement: 'front-chest',
     scaleOn: false
   };
+  state.view = 'front';
 
   var GRID_INCHES = 60;
   var SIZE_CHARTS = {
@@ -2914,6 +2986,8 @@
       'XXL':{ chest: 47, length: 30 }
     }
   };
+  // Apply category config size chart (overrides defaults above)
+  if (_cfg && _cfg.sizeChart) { SIZE_CHARTS = _cfg.sizeChart; }
 
   var ZONES = {
     'front-chest': { left:'37%', top:'20%', width:'26%', height:'16%', label:'FRONT CHEST' },
