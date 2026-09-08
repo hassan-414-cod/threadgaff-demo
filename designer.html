@@ -2138,13 +2138,11 @@
 
     /* Left Side */
     .designer-left {
-      flex: 1;
-      padding: 40px 5%;
+      flex: 0 0 40%;
+      padding: 40px 5% 0;
       display: flex;
       flex-direction: column;
       background: var(--paper);
-      overflow-y: auto;
-      padding-bottom: 120px;
       align-items: center; /* Center the box if it has max-width */
     }
     
@@ -2153,6 +2151,7 @@
       display: flex;
       flex-direction: column;
       flex: 1;
+      height: 100%;
     }
     
     .designer-left h2 {
@@ -2176,13 +2175,13 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      margin-bottom: 40px;
+      overflow: hidden;
       /* Grid background */
       background-image: 
         linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
       background-size: 30px 30px;
-      min-height: 400px;
-      max-height: 600px; 
     }
     
     .preview-tag {
@@ -2430,7 +2429,6 @@
     /* Show standard header inside sticky layout */
     .site-header { display: block !important; }
 
-    /* Prevew stage override */
     .preview-stage {
       position: relative;
       width: 100%;
@@ -2440,8 +2438,9 @@
       justify-content: center;
     }
     .preview-stage svg#garmentSvg {
-      width: 80%;
-      max-height: 80%;
+      width: 95%;
+      max-height: 90%;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
 </style>
@@ -2551,8 +2550,16 @@
 
       <div class="preview-box">
         <div class="preview-tag">LIVE PREVIEW</div>
-        <div class="expand-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+        <div class="scale-controls" style="position: absolute; top: 16px; right: 16px; display: flex; gap: 8px; z-index: 5;">
+          <select id="scaleSizeSel" style="padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; font-size: 0.7rem; font-weight: 600; cursor: pointer; outline: none; background: #fff;">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M" selected>M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option>
+          </select>
+          <button id="toggleScaleBtn" style="padding: 4px 12px; background: #fff; border: 1px solid var(--line); border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; color: var(--ink); box-shadow: 0 2px 8px rgba(0,0,0,0.02);">SCALE: OFF</button>
         </div>
         
         <div class="view-thumbs">
@@ -2567,6 +2574,16 @@
           <div class="view-thumb">
             <svg viewBox="0 0 24 24"><path d="M10,22 L10,8 L12,4 L14,4 L14,22 Z" fill="var(--ink)"/></svg>
             Side
+          </div>
+        </div>
+        
+        <!-- Measurement Overlays -->
+        <div id="measureOverlay" style="position:absolute; top:0; left:0; width:100%; height:100%; pointer-events:none; display:none; z-index:10;">
+          <div id="measureLen" style="position:absolute; border-left: 2px dashed var(--forest); display:flex; align-items:center;">
+            <span style="background:var(--forest); color:#fff; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:10px; transform:translateX(-120%); white-space:nowrap;">L: 28"</span>
+          </div>
+          <div id="measureChest" style="position:absolute; border-top: 2px dashed var(--forest); display:flex; justify-content:center;">
+            <span style="background:var(--forest); color:#fff; font-size:0.65rem; font-weight:700; padding:2px 6px; border-radius:10px; transform:translateY(-120%); white-space:nowrap;">C: 40"</span>
           </div>
         </div>
         
@@ -2902,7 +2919,34 @@
     libName: null,
     libSvg: null,
     uploadUrl: null,
-    placement: 'front-chest'
+    placement: 'front-chest',
+    scaleOn: false
+  };
+
+  var GRID_INCHES = 60;
+  var SIZE_CHARTS = {
+    tee: {
+      'XS': { chest: 35, length: 26 },
+      'S':  { chest: 37, length: 27 },
+      'M':  { chest: 39, length: 28 },
+      'L':  { chest: 41, length: 29 },
+      'XL': { chest: 43, length: 30 },
+      'XXL':{ chest: 45, length: 31 }
+    },
+    polo: {
+      'S':  { chest: 37, length: 27 },
+      'M':  { chest: 39, length: 28 },
+      'L':  { chest: 41, length: 29 },
+      'XL': { chest: 43, length: 30 },
+      'XXL':{ chest: 45, length: 31 }
+    },
+    hoodie: {
+      'S':  { chest: 39, length: 26 },
+      'M':  { chest: 41, length: 27 },
+      'L':  { chest: 43, length: 28 },
+      'XL': { chest: 45, length: 29 },
+      'XXL':{ chest: 47, length: 30 }
+    }
   };
 
   var ZONES = {
@@ -3007,14 +3051,82 @@
     }
 
     updateQty();
+    updateScale();
   }
 
   function updateQty(){
     var total = 0;
-    all('.qty-table input').forEach(function(inp){ total += (parseInt(inp.value, 10) || 0); });
+    var breakdown = [];
+    all('.qty-table input').forEach(function(inp){ 
+      var val = parseInt(inp.value, 10) || 0;
+      total += val;
+      if(val > 0) {
+        var sizeLabel = inp.previousElementSibling.textContent;
+        breakdown.push(sizeLabel + ': ' + val);
+      }
+    });
     $('qtyTotal').textContent = total;
-    $('sumQty').textContent = total + ' units';
+    var qtyStr = total + ' units';
+    if(breakdown.length > 0) {
+      qtyStr += ' (' + breakdown.join(' | ') + ')';
+    }
+    $('sumQty').textContent = qtyStr;
   }
+
+  function updateScale() {
+    var svg = $('garmentSvg');
+    var overlay = $('measureOverlay');
+    if (!state.scaleOn) {
+      svg.style.transform = '';
+      overlay.style.display = 'none';
+      return;
+    }
+    
+    var size = $('scaleSizeSel').value;
+    var dims = SIZE_CHARTS[state.garment] && SIZE_CHARTS[state.garment][size] ? SIZE_CHARTS[state.garment][size] : SIZE_CHARTS[state.garment]['M'];
+    if (!dims) dims = { length: 28, chest: 39 }; // fallback
+    
+    // Scale relative to base length of M (28)
+    var baseLen = SIZE_CHARTS[state.garment] && SIZE_CHARTS[state.garment]['M'] ? SIZE_CHARTS[state.garment]['M'].length : 28;
+    var scale = dims.length / baseLen;
+    svg.style.transform = 'scale(' + scale + ')';
+    
+    overlay.style.display = 'block';
+    
+    // Position arrows based on SVG bounds after transform
+    setTimeout(function() {
+      var stageBox = $('previewStage').getBoundingClientRect();
+      var svgBox = svg.getBoundingClientRect();
+      
+      var mLen = $('measureLen');
+      var mChest = $('measureChest');
+      
+      var relativeTop = svgBox.top - stageBox.top;
+      var relativeLeft = svgBox.left - stageBox.left;
+      
+      mLen.style.height = svgBox.height + 'px';
+      mLen.style.left = (relativeLeft - 10) + 'px';
+      mLen.style.top = relativeTop + 'px';
+      mLen.querySelector('span').textContent = 'L: ' + dims.length + '"';
+      
+      mChest.style.width = svgBox.width + 'px';
+      mChest.style.left = relativeLeft + 'px';
+      mChest.style.top = (relativeTop + svgBox.height * 0.3) + 'px'; // approx chest level
+      mChest.querySelector('span').textContent = 'C: ' + dims.chest + '"';
+    }, 450); // wait for CSS transition to finish
+  }
+
+  $('toggleScaleBtn').addEventListener('click', function(){
+    state.scaleOn = !state.scaleOn;
+    this.textContent = state.scaleOn ? 'SCALE: ON' : 'SCALE: OFF';
+    this.style.background = state.scaleOn ? 'var(--forest)' : '#fff';
+    this.style.color = state.scaleOn ? '#fff' : 'var(--ink)';
+    updateScale();
+  });
+  
+  $('scaleSizeSel').addEventListener('change', function(){
+    if (state.scaleOn) updateScale();
+  });
 
   // garment type
   all('#garmentRow .opt-btn').forEach(function(btn){
