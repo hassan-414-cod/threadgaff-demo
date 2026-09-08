@@ -2024,9 +2024,16 @@
       .dc-body {
         grid-template-columns: 1fr;
       }
+      .dc-preview {
+        position: relative !important;
+        top: 0 !important;
+        height: auto !important;
+        padding: 20px !important;
+      }
       .dc-controls {
         border-left: none;
         border-top: 1px solid var(--line);
+        padding: 30px 5% !important;
       }
     }
 
@@ -2221,28 +2228,13 @@
   </header>
 
 <main>
-  <section class="section-tight">
-    <div class="wrap">
+  <section style="padding: 0;">
+    <div style="width: 100%;">
 
-      <div class="section-head">
-        <h2>Custom Designer</h2>
-        <p>Every choice below updates the preview on the left immediately.</p>
-      </div>
+      <div class="dc-card" style="width: 100%; border-top: 1px solid var(--line);">
+        <div class="dc-body" style="align-items: flex-start; margin: 0;">
 
-      <div id="sourceBanner" class="card-plain" style="display:none; margin-bottom:28px; border-color:var(--gold-deep);">
-        <span class="mono" style="font-size:0.8rem; color:var(--gold-deep);">LOADED FROM THE DESIGN LIBRARY</span>
-        <h3 id="sourceBannerName" style="margin-top:6px;"></h3>
-      </div>
-
-      <div class="designer-layout" style="display: flex; gap: 30px; max-width: 1300px; margin: 0 auto; align-items: flex-start; justify-content: center; flex-wrap: wrap;">
-      <div class="dc-card" style="flex: 1; min-width: 500px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); height: 750px; display: flex; flex-direction: column; background: #fff;">
-        <div class="dc-header" style="border-bottom: 1px solid var(--line); padding: 20px 30px;">
-           <span class="dc-header-title">CUSTOM DESIGNER</span>
-           <span class="dc-header-sub">CONFIGURE YOUR PRODUCTION ORDER</span>
-        </div>
-        <div class="dc-body" style="display: grid; grid-template-columns: 1fr 450px; flex: 1; min-height: 0;">
-
-          <div class="dc-preview" style="padding: 40px; height: 100%; overflow: hidden; display: flex; flex-direction: column; justify-content: center; background: #efebe4;">
+          <div class="dc-preview" style="padding: 40px; position: sticky; top: 105px; height: calc(100vh - 105px); overflow: hidden; display: flex; align-items: center; justify-content: center; background: #e3dec9;">
             <div class="spec-card">
             <span class="spec-card-tag">LIVE PREVIEW</span>
             <div class="preview-stage" id="previewStage">
@@ -2288,8 +2280,19 @@
               <span id="capPlacement">FRONT CHEST</span>
             </p>
           </div>
+        </div>
 
-        <div class="dc-controls" style="padding: 30px; background: #fff; height: 100%; overflow-y: auto;">
+        <div class="dc-controls" style="padding: 40px 8%; background: #fff; border-left: 1px solid var(--line);">
+          <div class="dc-header" style="padding-bottom: 30px; margin-bottom: 30px; border-bottom: 1px solid var(--line);">
+             <h1 style="font-size: 2.2rem; margin-bottom: 10px;">Custom Designer</h1>
+             <p style="color: var(--muted); margin: 0; font-size: 1.05rem; max-width: none;">Configure your production order piece by piece. Every choice updates the live preview immediately.</p>
+          </div>
+
+          <div id="sourceBanner" class="card-plain" style="display:none; margin-bottom:28px; border-color:var(--gold-deep);">
+            <span class="mono" style="font-size:0.8rem; color:var(--gold-deep);">LOADED FROM THE DESIGN LIBRARY</span>
+            <h3 id="sourceBannerName" style="margin-top:6px;"></h3>
+          </div>
+
           <div class="control-panel">
 
           <div class="control-block">
@@ -2388,14 +2391,6 @@
             <div class="qty-total"><span>Total units</span><span id="qtyTotal" class="mono">0</span></div>
           </div>
 
-          </div>
-        </div>
-        </div> <!-- Closing dc-body -->
-      </div>
-
-      <!-- Summary Sidebar -->
-      <div class="summary-sidebar" style="width: 320px; flex-shrink: 0; position: sticky; top: 120px;">
-        <div style="background: #fff; padding: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
           <div class="control-block">
             <div class="control-label"><h4>Summary</h4></div>
             <div class="summary-box">
@@ -2411,9 +2406,10 @@
             </div>
             <a href="start.html" id="requestQuoteBtn" class="btn btn-primary btn-block" style="margin-top:16px;">Request This Quote</a>
           </div>
+
+          </div>
         </div>
       </div>
-    </div> <!-- Closing designer-layout wrapper -->
   </section>
 </main>
 
