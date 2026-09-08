@@ -3,429 +3,2229 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solutions — Threadgaff</title>
-<meta name="description" content="How Threadgaff serves brands and retailers, corporates and schools, events and teams, and importers and startups.">
+<title>Who We Serve — Threadgaff</title>
+<meta name="description" content="How Threadgaff serves importers &amp; wholesale buyers, brands &amp; retailers, and event &amp; charity organisers.">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
-:root{
-  --ink:#191d1a;
-  --paper:#f1f0e9;
-  --panel:#fffdf8;
-  --line:#d9d6c7;
-  --muted:#66665c;
-  --gold:#c98a1f;
-  --gold-deep:#8a5f14;
-  --forest:#33453a;
-  --forest-tint:#e7ebe4;
-  --radius-s:2px;
-}
+    :root {
+      --ink: #353936;
+      --paper: #f2efe6;
+      --panel: #fffdf9;
+      --line: #d8d2c5;
+      --muted: #6b6f63;
+      --gold: #4f5a45;
+      --gold-deep: #3c4536;
+      --forest: #4f5a45;
+      --forest-tint: #e3e6dc;
+      --radius-s: 2px;
+    }
 
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-@media (prefers-reduced-motion: reduce){
-  html{scroll-behavior:auto;}
-  *,*::before,*::after{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
-}
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
 
-body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:'IBM Plex Sans',system-ui,sans-serif;
-  font-size:16px;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-h1,h2,h3,h4{
-  font-family:'Big Shoulders Display',sans-serif;
-  font-weight:700;
-  line-height:0.96;
-  margin:0;
-  letter-spacing:0.2px;
-}
-h1{font-size:clamp(2.6rem,5.5vw,4.6rem); font-weight:800;}
-h2{font-size:clamp(1.9rem,3.4vw,2.7rem);}
-h3{font-size:1.4rem;}
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
 
-p{margin:0 0 1em; max-width:62ch;}
-a{color:inherit;}
-img{max-width:100%; display:block;}
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        transition-duration: 0.001ms !important;
+      }
+    }
 
-.mono{font-family:'IBM Plex Mono',monospace;}
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.wrap{
-  max-width:1180px;
-  margin:0 auto;
-  padding:0 32px;
-}
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
 
-/* -------- buttons -------- */
-.btn{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:13px 24px;
-  border-radius:var(--radius-s);
-  font-family:'IBM Plex Sans',sans-serif;
-  font-weight:600;
-  font-size:0.95rem;
-  border:1px solid transparent;
-  cursor:pointer;
-  text-decoration:none;
-  transition:background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.btn-primary{background:var(--gold); color:var(--ink); border-color:var(--gold);}
-.btn-primary:hover{background:var(--gold-deep); border-color:var(--gold-deep); color:#fff;}
-.btn-outline{background:transparent; color:var(--ink); border-color:var(--ink);}
-.btn-outline:hover{background:var(--ink); color:var(--paper);}
-.btn-outline-light{background:transparent; color:var(--paper); border-color:var(--paper);}
-.btn-outline-light:hover{background:var(--paper); color:var(--ink);}
-.btn-block{width:100%; justify-content:center;}
-.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
-  outline:2px solid var(--gold-deep); outline-offset:2px;
-}
+    h1 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
 
-/* -------- nav -------- */
-.site-header{
-  position:sticky; top:0; z-index:50;
-  background:var(--paper);
-  border-bottom:1px solid var(--line);
-}
-.nav{
-  display:flex; align-items:center; justify-content:space-between;
-  padding:20px 32px;
-  max-width:1180px; margin:0 auto;
-  gap:24px; flex-wrap:wrap;
-}
-.logo{
-  font-family:'Big Shoulders Display',sans-serif;
-  font-weight:800; font-size:1.5rem;
-  text-decoration:none; color:var(--ink);
-  letter-spacing:0.5px;
-  display:flex; align-items:center; gap:9px;
-}
-.logo-mark{width:20px; height:20px; flex:none;}
-.nav-links{
-  display:flex; gap:28px; list-style:none; margin:0; padding:0;
-  flex-wrap:wrap; align-items:center;
-}
-.nav-links a{
-  text-decoration:none; color:var(--muted); font-weight:500; font-size:0.94rem;
-  padding-bottom:3px; border-bottom:2px solid transparent;
-}
-.nav-links a:hover{color:var(--ink);}
-.nav-links a.active{color:var(--ink); border-bottom-color:var(--gold);}
-.nav-cta{flex:none;}
+    h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+    }
 
-/* -------- hero spec-card (garment preview frame) -------- */
-.spec-card{
-  position:relative;
-  background:var(--panel);
-  border:1px solid var(--line);
-  padding:28px;
-}
-.spec-card::before,.spec-card::after,.spec-card .tick-tl,.spec-card .tick-br{
-  content:""; position:absolute; width:14px; height:14px;
-  border:2px solid var(--ink);
-}
-.spec-card::before{top:-1px; left:-1px; border-right:none; border-bottom:none;}
-.spec-card::after{bottom:-1px; right:-1px; border-left:none; border-top:none;}
-.spec-card-tag{
-  position:absolute; top:12px; right:16px;
-  font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted);
-}
+    h3 {
+      font-size: 1.2rem;
+    }
 
-/* -------- sections -------- */
-.section{padding:88px 0;}
-.section-tight{padding:56px 0;}
-.section-head{
-  display:flex; justify-content:space-between; align-items:flex-end; gap:24px;
-  margin-bottom:40px; flex-wrap:wrap;
-}
-.section-head p{margin:10px 0 0; color:var(--muted);}
-.hr{border:none; border-top:1px solid var(--line); margin:0;}
+    h4 {
+      font-size: 1rem;
+    }
 
-/* -------- hero -------- */
-.hero{padding:70px 0 90px;}
-.hero-grid{
-  display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center;
-}
-.hero-actions{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
-.hero-lede{color:var(--muted); font-size:1.08rem; max-width:46ch;}
+    h5 {
+      font-size: 0.85rem;
+    }
 
-/* -------- data strip -------- */
-.data-strip{
-  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-  padding:26px 0;
-}
-.data-row{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
-}
-.data-item .num{font-family:'IBM Plex Mono',monospace; font-size:1.7rem; color:var(--gold-deep); display:block;}
-.data-item .label{font-size:0.86rem; color:var(--muted);}
+    p {
+      margin: 0 0 1em;
+      max-width: 62ch;
+    }
 
-/* -------- tile grid (design library) -------- */
-.tile-grid{
-  display:grid; grid-template-columns:repeat(4,1fr); gap:18px;
-}
-.tile{
-  border:1px solid var(--line); background:var(--panel);
-  display:flex; flex-direction:column; text-decoration:none; color:var(--ink);
-  transition:border-color 0.15s ease;
-}
-.tile:hover{border-color:var(--ink);}
-.tile-swatch{
-  aspect-ratio:4/5; display:flex; align-items:center; justify-content:center;
-  border-bottom:1px solid var(--line);
-}
-.tile-swatch svg{width:58%;}
-.tile-body{padding:16px 16px 18px;}
-.tile-cat{font-family:'IBM Plex Mono',monospace; font-size:0.72rem; color:var(--muted); display:block; margin-bottom:6px;}
-.tile-name{font-weight:600; font-size:1.02rem;}
-.tile-cta{font-size:0.86rem; color:var(--gold-deep); margin-top:10px; font-weight:600;}
-.tile.wide{grid-column:span 2;}
-.tile.wide .tile-swatch{aspect-ratio:auto; height:100%; min-height:180px;}
+    a {
+      color: inherit;
+    }
 
-/* -------- two path panels -------- */
-.path-grid{display:grid; grid-template-columns:1fr 1fr; gap:22px;}
-.path-panel{
-  border:1px solid var(--line); background:var(--panel);
-  padding:34px; display:flex; flex-direction:column; gap:16px;
-}
-.path-panel h3{font-size:1.7rem;}
-.path-panel ul{margin:0; padding-left:18px; color:var(--muted); font-size:0.95rem;}
-.path-panel li{margin-bottom:6px;}
-.path-index{font-family:'IBM Plex Mono',monospace; color:var(--gold-deep); font-size:0.85rem;}
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-/* -------- segments strip -------- */
-.segment-list{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-top:1px solid var(--line);}
-.segment-item{
-  padding:26px 22px; border-right:1px solid var(--line); border-bottom:1px solid var(--line);
-}
-.segment-item:last-child{border-right:none;}
-.segment-item h4{font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:1.02rem; margin-bottom:8px;}
-.segment-item p{font-size:0.9rem; color:var(--muted); margin:0;}
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
 
-/* -------- dark band -------- */
-.band-dark{background:var(--ink); color:var(--paper);}
-.band-dark .muted{color:#a9a99c;}
-.band-dark .hr{border-top-color:#3a3f38;}
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
 
-/* -------- footer -------- */
-.site-footer{border-top:1px solid var(--line); padding:56px 0 34px;}
-.footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:32px; margin-bottom:40px;}
-.footer-col h5{font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--muted); margin:0 0 14px; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
-.footer-col ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:9px;}
-.footer-col a{text-decoration:none; color:var(--ink); font-size:0.92rem;}
-.footer-col a:hover{color:var(--gold-deep);}
-.footer-bottom{display:flex; justify-content:space-between; color:var(--muted); font-size:0.82rem; flex-wrap:wrap; gap:10px;}
+    /* -------- buttons -------- */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: var(--radius-s);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
 
-/* -------- generic content blocks -------- */
-.kicker{font-size:0.95rem; color:var(--gold-deep); font-weight:600; margin-bottom:10px;}
-.card-plain{border:1px solid var(--line); background:var(--panel); padding:28px;}
-.two-col{display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start;}
-.list-clean{list-style:none; margin:0; padding:0;}
-.list-clean li{padding:14px 0; border-bottom:1px solid var(--line); display:flex; gap:14px;}
-.list-clean li:first-child{padding-top:0;}
+    .btn-primary {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
 
-/* -------- process steps (How It Works) -------- */
-.step-row{display:grid; grid-template-columns:64px 1fr 120px; gap:22px; padding:26px 0; border-bottom:1px solid var(--line); align-items:start;}
-.step-row:first-child{border-top:1px solid var(--line);}
-.step-num{font-family:'IBM Plex Mono',monospace; font-size:1.2rem; color:var(--gold-deep);}
-.step-time{font-family:'IBM Plex Mono',monospace; font-size:0.85rem; color:var(--muted); text-align:right;}
+    .btn-primary:hover {
+      background: var(--gold-deep);
+      border-color: var(--gold-deep);
+      color: #fff;
+    }
 
-/* -------- solutions segments (full page) -------- */
-.solution-block{padding:52px 0; border-bottom:1px solid var(--line);}
-.solution-block:last-of-type{border-bottom:none;}
-.solution-grid{display:grid; grid-template-columns:0.9fr 1.4fr; gap:44px;}
-.solution-meta{font-family:'IBM Plex Mono',monospace; font-size:0.82rem; color:var(--muted); margin-bottom:10px;}
+    .btn-outline {
+      background: transparent;
+      color: var(--forest);
+      border-color: var(--forest);
+    }
 
-/* ================= DESIGNER TOOL ================= */
-.designer-layout{display:grid; grid-template-columns:1fr 1.05fr; gap:40px; align-items:start;}
-.preview-pane{position:sticky; top:96px;}
-.preview-stage{
-  aspect-ratio:1/1.05; display:flex; align-items:center; justify-content:center;
-  background:
-    linear-gradient(var(--line) 1px, transparent 1px) 0 0/28px 28px,
-    linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/28px 28px,
-    var(--panel);
-  position:relative; overflow:hidden;
-}
-.preview-stage svg{width:66%; max-width:280px;}
-.placement-marker{
-  position:absolute; border:1.5px dashed var(--gold-deep);
-  background:rgba(201,138,31,0.08);
-  display:none; align-items:center; justify-content:center;
-  font-family:'IBM Plex Mono',monospace; font-size:0.62rem; color:var(--gold-deep);
-  text-align:center; padding:2px;
-}
-.placement-marker.on{display:flex;}
-.upload-art-img{position:absolute; object-fit:contain; display:none;}
-.upload-art-img.on{display:block;}
-.preview-caption{display:flex; justify-content:space-between; margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted);}
+    .btn-outline:hover {
+      background: var(--forest);
+      color: var(--paper);
+    }
 
-.control-panel{display:flex; flex-direction:column; gap:34px;}
-.control-block{border-bottom:1px solid var(--line); padding-bottom:28px;}
-.control-block:last-child{border-bottom:none;}
-.control-label{display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px;}
-.control-label span.step{font-family:'IBM Plex Mono',monospace; font-size:0.78rem; color:var(--muted);}
-.control-label h4{font-size:1.05rem; font-weight:600; font-family:'IBM Plex Sans',sans-serif;}
+    .btn-outline-light {
+      background: transparent;
+      color: var(--paper);
+      border-color: var(--paper);
+    }
 
-.option-row{display:flex; flex-wrap:wrap; gap:10px;}
-.opt-btn{
-  padding:9px 16px; border:1px solid var(--line); background:var(--panel);
-  font-family:'IBM Plex Sans',sans-serif; font-size:0.88rem; font-weight:500;
-  cursor:pointer; color:var(--ink); border-radius:var(--radius-s);
-}
-.opt-btn:hover{border-color:var(--ink);}
-.opt-btn.sel{background:var(--ink); color:var(--paper); border-color:var(--ink);}
-.opt-btn[disabled]{opacity:0.35; cursor:not-allowed;}
+    .btn-outline-light:hover {
+      background: var(--paper);
+      color: var(--ink);
+    }
 
-.swatch-row{display:flex; flex-wrap:wrap; gap:12px;}
-.swatch{
-  width:36px; height:36px; border-radius:50%; cursor:pointer;
-  border:2px solid transparent; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.15);
-  position:relative;
-}
-.swatch.sel::after{
-  content:""; position:absolute; inset:-5px; border:2px solid var(--ink); border-radius:50%;
-}
+    .btn-block {
+      width: 100%;
+      justify-content: center;
+    }
 
-.source-tabs{display:flex; gap:2px; margin-bottom:16px;}
-.source-tab{flex:1; padding:11px; text-align:center; background:var(--panel); border:1px solid var(--line); cursor:pointer; font-size:0.88rem; font-weight:600;}
-.source-tab.sel{background:var(--ink); color:var(--paper); border-color:var(--ink);}
-.source-pane{display:none;}
-.source-pane.on{display:block;}
-.lib-thumb-row{display:grid; grid-template-columns:repeat(5,1fr); gap:8px;}
-.lib-thumb{aspect-ratio:1; border:1px solid var(--line); cursor:pointer; display:flex; align-items:center; justify-content:center; background:var(--panel);}
-.lib-thumb:hover{border-color:var(--ink);}
-.lib-thumb.sel{border-color:var(--gold-deep); border-width:2px;}
-.lib-thumb svg{width:60%;}
-.upload-drop{
-  border:1.5px dashed var(--line); padding:26px; text-align:center; cursor:pointer; font-size:0.9rem; color:var(--muted);
-}
-.upload-drop:hover{border-color:var(--ink); color:var(--ink);}
-.upload-drop input{display:none;}
-.file-name{margin-top:10px; font-family:'IBM Plex Mono',monospace; font-size:0.8rem; color:var(--gold-deep);}
+    .btn:focus-visible,
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--gold-deep);
+      outline-offset: 2px;
+    }
 
-.qty-table{width:100%; border-collapse:collapse; font-size:0.92rem;}
-.qty-table th{text-align:left; font-weight:600; font-size:0.78rem; color:var(--muted); padding-bottom:8px; border-bottom:1px solid var(--line);}
-.qty-table td{padding:10px 0; border-bottom:1px solid var(--line);}
-.qty-table input{width:64px; padding:7px 8px; border:1px solid var(--line); font-family:'IBM Plex Mono',monospace; font-size:0.9rem; border-radius:var(--radius-s);}
-.qty-total{display:flex; justify-content:space-between; padding-top:12px; font-weight:600;}
+    /* -------- nav -------- */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--forest);
+    }
 
-.summary-box{background:var(--forest-tint); border:1px solid var(--line); padding:22px;}
-.summary-box dl{margin:0; display:grid; grid-template-columns:auto 1fr; gap:6px 14px; font-size:0.88rem;}
-.summary-box dt{color:var(--muted);}
-.summary-box dd{margin:0; font-weight:600; text-align:right;}
+    .utility-strip {
+      background: var(--ink);
+      color: #fff;
+      padding: 9px 32px;
+      font-size: 0.74rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
 
-/* -------- forms (quote page) -------- */
-.form-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-.field{display:flex; flex-direction:column; gap:7px;}
-.field.full{grid-column:1/-1;}
-.field label{font-size:0.86rem; font-weight:600;}
-.field input,.field select,.field textarea{
-  padding:12px 13px; border:1px solid var(--line); background:var(--panel);
-  font-family:'IBM Plex Sans',sans-serif; font-size:0.95rem; color:var(--ink); border-radius:var(--radius-s);
-}
-.field textarea{resize:vertical; min-height:110px;}
+    .utility-strip .utility-msg {
+      text-transform: uppercase;
+      letter-spacing: 0.13em;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: center;
+    }
 
-/* -------- responsive -------- */
-@media (max-width:960px){
-  .hero-grid,.two-col,.path-grid,.solution-grid,.designer-layout{grid-template-columns:1fr;}
-  .data-row{grid-template-columns:repeat(2,1fr);}
-  .tile-grid{grid-template-columns:repeat(2,1fr);}
-  .tile.wide{grid-column:span 2;}
-  .segment-list{grid-template-columns:repeat(2,1fr);}
-  .footer-grid{grid-template-columns:1fr 1fr;}
-  .preview-pane{position:static;}
-}
-@media (max-width:600px){
-  .wrap{padding:0 20px;}
-  .nav{padding:16px 20px;}
-  .tile-grid,.segment-list{grid-template-columns:1fr;}
-  .tile.wide{grid-column:span 1;}
-  .data-row{grid-template-columns:1fr 1fr;}
-  .form-grid{grid-template-columns:1fr;}
-  .step-row{grid-template-columns:40px 1fr; }
-  .step-time{grid-column:2; text-align:left; padding-top:4px;}
-  .footer-grid{grid-template-columns:1fr;}
-}
+    .utility-strip .utility-msg::before,
+    .utility-strip .utility-msg::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: rgba(216, 210, 197, 0.4);
+      flex: none;
+    }
 
-</style>
+    .utility-strip-links {
+      position: absolute;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 18px;
+    }
+
+    .utility-strip-links a {
+      text-decoration: none;
+      color: #c7c4b6;
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+    }
+
+    .utility-strip-links a:hover {
+      color: var(--paper);
+    }
+
+    .nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 10px 32px;
+      max-width: 1180px;
+      margin: 0 auto;
+      gap: 20px;
+    }
+
+    .logo {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      text-decoration: none;
+      color: #fff;
+      letter-spacing: 0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-self: start;
+    }
+
+    .logo-mark {
+      width: 30px;
+      height: 30px;
+      flex: none;
+      color: #fff;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+      justify-self: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding-bottom: 4px;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid #fff;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-self: end;
+    }
+
+    .nav-cta {
+      flex: none;
+    }
+
+    .mega-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 24px;
+      width: 500px;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      box-shadow: 0 10px 24px rgba(53, 57, 54, 0.08);
+      z-index: 100;
+      text-align: left;
+    }
+
+    .nav-links li:hover .mega-menu {
+      display: grid;
+    }
+
+    .mega-col h5 {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .mega-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .mega-col a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border: none;
+      padding: 0;
+      font-weight: 500;
+    }
+
+    .mega-col a:hover {
+      color: var(--forest);
+    }
+
+    .mega-footer {
+      grid-column: 1 / -1;
+      border-top: 1px solid var(--line);
+      padding-top: 16px;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .mega-footer a {
+      color: var(--forest);
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      padding: 0;
+    }
+
+    @media (max-width:960px) {
+      .nav {
+        grid-template-columns: 1fr;
+        row-gap: 14px;
+        justify-items: center;
+      }
+
+      .logo,
+      .nav-actions {
+        justify-self: center;
+      }
+
+      .utility-strip-links {
+        display: none;
+      }
+    }
+
+    @media (max-width:600px) {
+      .utility-strip {
+        padding: 8px 16px;
+      }
+
+      .utility-strip .utility-msg {
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+      }
+    }
+
+
+    /* -------- hero spec-card (garment preview frame) -------- */
+    .spec-card {
+      position: relative;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 28px;
+    }
+
+    .spec-card::before,
+    .spec-card::after,
+    .spec-card .tick-tl,
+    .spec-card .tick-br {
+      content: "";
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--ink);
+    }
+
+    .spec-card::before {
+      top: -1px;
+      left: -1px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .spec-card::after {
+      bottom: -1px;
+      right: -1px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .spec-card-tag {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+
+    /* -------- hero split layout -------- */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      min-height: 85vh;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      background-size: cover;
+      background-position: top center;
+      min-height: 85vh;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 50px;
+      background: linear-gradient(135deg, rgba(79, 90, 69, 0.95) 0%, rgba(53, 57, 54, 0.98) 100%);
+    }
+
+    .hero-text {
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      letter-spacing: 0.15em;
+      color: #fff;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: #fff;
+      font-weight: 600;
+      margin-top: 14px;
+      text-transform: uppercase;
+    }
+
+    .hero-hr {
+      width: 50px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.4);
+      border: none;
+      margin: 28px auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 36px;
+      flex-wrap: wrap;
+    }
+
+    /* -------- features strip -------- */
+    .features-strip {
+      border-top: 1px solid var(--ink) !important;
+      border-bottom: 1px solid var(--ink) !important;
+      padding: 30px 0 !important;
+      background: var(--ink) !important;
+    }
+
+    .features-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: #fff !important;
+    }
+
+    /* -------- featured collection -------- */
+    .featured-col {
+      padding: 80px 0;
+      background: var(--panel);
+    }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .prod-card {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prod-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background: var(--paper);
+    }
+
+    .prod-info {
+      padding: 18px 0;
+    }
+
+    .prod-info h4 {
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      text-transform: none;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+
+    .prod-info p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 0 0 10px;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 8px;
+    }
+
+    .swatches span {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* -------- bottom block -------- */
+    .bottom-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom-img {
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+    }
+
+    .bottom-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .cat-filters {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .cat-btn {
+      padding: 8px 20px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      color: var(--ink);
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .cat-btn svg {
+      width: 14px;
+      height: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .cat-btn:hover {
+      border-color: var(--forest);
+      color: var(--forest);
+    }
+
+    .cat-btn.active {
+      background: var(--forest);
+      color: #fff;
+      border-color: var(--forest);
+    }
+
+    .cat-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .prod-grid.extended {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (max-width:960px) {
+
+      .hero-split,
+      .bottom-block {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        padding: 50px 30px;
+      }
+
+      .hero-title {
+        white-space: normal;
+      }
+
+      .prod-grid,
+      .prod-grid.extended {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:600px) {
+
+      .prod-grid,
+      .prod-grid.extended {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* -------- sections -------- */
+    .section {
+      padding: 88px 0;
+    }
+
+    .section-tight {
+      padding: 56px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 24px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .section-head p {
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    .hr {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 0;
+    }
+
+    /* -------- hero -------- */
+    .hero {
+      padding: 70px 0 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .hero-lede {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 46ch;
+    }
+
+    /* -------- data strip -------- */
+    .data-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 26px 0;
+    }
+
+    .data-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .data-item .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.7rem;
+      color: var(--gold-deep);
+      display: block;
+    }
+
+    .data-item .label {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    /* -------- tile grid (design library) -------- */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .tile {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.15s ease;
+    }
+
+    .tile:hover {
+      border-color: var(--ink);
+    }
+
+    .tile-swatch {
+      aspect-ratio: 4/5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tile-swatch svg {
+      width: 58%;
+    }
+
+    .tile-body {
+      padding: 16px 16px 18px;
+    }
+
+    .tile-cat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .tile-name {
+      font-weight: 600;
+      font-size: 1.02rem;
+    }
+
+    .tile-cta {
+      font-size: 0.86rem;
+      color: var(--gold-deep);
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .tile.wide {
+      grid-column: span 2;
+    }
+
+    .tile.wide .tile-swatch {
+      aspect-ratio: auto;
+      height: 100%;
+      min-height: 180px;
+    }
+
+    /* -------- two path panels -------- */
+    .path-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .path-panel {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .path-panel h3 {
+      font-size: 1.7rem;
+    }
+
+    .path-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .path-panel li {
+      margin-bottom: 6px;
+    }
+
+    .path-index {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--gold-deep);
+      font-size: 0.85rem;
+    }
+
+    /* -------- segments strip -------- */
+    .segment-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .segment-item {
+      padding: 26px 22px;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .segment-item:last-child {
+      border-right: none;
+    }
+
+    .segment-item h4 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+
+    .segment-item p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+
+    /* -------- new homepage layout -------- */
+    .hero-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 85vh;
+      overflow: hidden;
+    }
+
+    .hero-img {
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+    }
+
+    .hero-content {
+      grid-column: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    .hero-text {
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(3rem, 6vw, 5rem);
+      letter-spacing: 0.2em;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      letter-spacing: 0.4em;
+      color: var(--ink);
+      font-weight: 500;
+      margin-top: 20px;
+    }
+
+    .hero-hr {
+      width: 60px;
+      height: 2px;
+      background: var(--ink);
+      border: none;
+      margin: 30px auto;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .features-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 40px 0;
+      background: var(--paper);
+    }
+
+    .features-row {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .featured-col {
+      padding: 80px 0;
+      background: var(--panel);
+    }
+
+    .prod-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .prod-card {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .prod-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      background: var(--paper);
+    }
+
+    .prod-info {
+      padding: 20px 0;
+    }
+
+    .prod-info h4 {
+      font-size: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      text-transform: none;
+      font-weight: 600;
+      margin-bottom: 6px;
+      letter-spacing: 0;
+    }
+
+    .prod-info p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 500;
+      margin: 0 0 10px;
+    }
+
+    .swatches {
+      display: flex;
+      gap: 8px;
+    }
+
+    .swatches span {
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .bottom-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .bottom-img {
+      background-size: cover;
+      background-position: center;
+      min-height: 500px;
+    }
+
+    .bottom-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px;
+    }
+
+    @media (max-width:960px) {
+
+      .hero-split,
+      .bottom-block {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-img {
+        width: 100%;
+        opacity: 0.5;
+        z-index: 0;
+      }
+
+      .hero-content {
+        grid-column: 1;
+        z-index: 1;
+      }
+
+      .prod-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:600px) {
+      .prod-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+
+    /* -------- dark band -------- */
+    .band-dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .band-dark .muted {
+      color: #b7b3a6;
+    }
+
+    .band-dark .hr {
+      border-top-color: #464b45;
+    }
+
+    /* -------- footer -------- */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 56px 0 34px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h5 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin: 0 0 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .footer-col a {
+      text-decoration: none;
+      color: var(--ink);
+      font-size: 0.92rem;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold-deep);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-size: 0.82rem;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* -------- generic content blocks -------- */
+    .kicker {
+      font-size: 0.95rem;
+      color: var(--gold-deep);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .card-plain {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 28px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .list-clean {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .list-clean li {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      gap: 14px;
+    }
+
+    .list-clean li:first-child {
+      padding-top: 0;
+    }
+
+    /* -------- process steps (How It Works) -------- */
+    .step-row {
+      display: grid;
+      grid-template-columns: 64px 1fr 120px;
+      gap: 22px;
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+
+    .step-row:first-child {
+      border-top: 1px solid var(--line);
+    }
+
+    .step-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 1.2rem;
+      color: var(--gold-deep);
+    }
+
+    .step-time {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* -------- solutions segments (full page) -------- */
+    .solution-block {
+      padding: 52px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .solution-block:last-of-type {
+      border-bottom: none;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.4fr;
+      gap: 44px;
+    }
+
+    .solution-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* ================= DESIGNER TOOL ================= */
+    .designer-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .preview-pane {
+      position: sticky;
+      top: 96px;
+    }
+
+    .preview-stage {
+      aspect-ratio: 1/1.05;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        linear-gradient(var(--line) 1px, transparent 1px) 0 0/28px 28px,
+        linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0/28px 28px,
+        var(--panel);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .preview-stage svg {
+      width: 66%;
+      max-width: 280px;
+    }
+
+    .placement-marker {
+      position: absolute;
+      border: 1.5px dashed var(--gold-deep);
+      background: rgba(201, 138, 31, 0.08);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.62rem;
+      color: var(--gold-deep);
+      text-align: center;
+      padding: 2px;
+    }
+
+    .placement-marker.on {
+      display: flex;
+    }
+
+    .upload-art-img {
+      position: absolute;
+      object-fit: contain;
+      display: none;
+    }
+
+    .upload-art-img.on {
+      display: block;
+    }
+
+    .preview-caption {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .control-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+    }
+
+    .control-block {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 28px;
+    }
+
+    .control-block:last-child {
+      border-bottom: none;
+    }
+
+    .control-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+
+    .control-label span.step {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .control-label h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .option-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .opt-btn {
+      padding: 9px 16px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      color: var(--ink);
+      border-radius: var(--radius-s);
+    }
+
+    .opt-btn:hover {
+      border-color: var(--ink);
+    }
+
+    .opt-btn.sel {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .opt-btn[disabled] {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .swatch-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .swatch {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .swatch.sel::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+    }
+
+    .source-tabs {
+      display: flex;
+      gap: 2px;
+      margin-bottom: 16px;
+    }
+
+    .source-tab {
+      flex: 1;
+      padding: 11px;
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .source-tab.sel {
+      background: var(--ink);
+      color: var(--paper);
+      border-color: var(--ink);
+    }
+
+    .source-pane {
+      display: none;
+    }
+
+    .source-pane.on {
+      display: block;
+    }
+
+    .lib-thumb-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+
+    .lib-thumb {
+      aspect-ratio: 1;
+      border: 1px solid var(--line);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--panel);
+    }
+
+    .lib-thumb:hover {
+      border-color: var(--ink);
+    }
+
+    .lib-thumb.sel {
+      border-color: var(--gold-deep);
+      border-width: 2px;
+    }
+
+    .lib-thumb svg {
+      width: 60%;
+    }
+
+    .upload-drop {
+      border: 1.5px dashed var(--line);
+      padding: 26px;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .upload-drop:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .upload-drop input {
+      display: none;
+    }
+
+    .file-name {
+      margin-top: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--gold-deep);
+    }
+
+    .qty-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .qty-table th {
+      text-align: left;
+      font-weight: 600;
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .qty-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .qty-table input {
+      width: 64px;
+      padding: 7px 8px;
+      border: 1px solid var(--line);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      border-radius: var(--radius-s);
+    }
+
+    .qty-total {
+      display: flex;
+      justify-content: space-between;
+      padding-top: 12px;
+      font-weight: 600;
+    }
+
+    .summary-box {
+      background: var(--forest-tint);
+      border: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .summary-box dl {
+      margin: 0;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 14px;
+      font-size: 0.88rem;
+    }
+
+    .summary-box dt {
+      color: var(--muted);
+    }
+
+    .summary-box dd {
+      margin: 0;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* -------- forms (quote page) -------- */
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field.full {
+      grid-column: 1/-1;
+    }
+
+    .field label {
+      font-size: 0.86rem;
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      padding: 12px 13px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      border-radius: var(--radius-s);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    /* -------- responsive -------- */
+    @media (max-width:960px) {
+
+      .hero-grid,
+      .two-col,
+      .path-grid,
+      .solution-grid,
+      .designer-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .data-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tile-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tile.wide {
+        grid-column: span 2;
+      }
+
+      .segment-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .preview-pane {
+        position: static;
+      }
+    }
+
+    @media (max-width:600px) {
+      .wrap {
+        padding: 0 20px;
+      }
+
+      .nav {
+        padding: 16px 20px;
+      }
+
+      .tile-grid,
+      .segment-list {
+        grid-template-columns: 1fr;
+      }
+
+      .tile.wide {
+        grid-column: span 1;
+      }
+
+      .data-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .step-row {
+        grid-template-columns: 40px 1fr;
+      }
+
+      .step-time {
+        grid-column: 2;
+        text-align: left;
+        padding-top: 4px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* -------- FULL BLEED HERO -------- */
+    .hero-full {
+      position: relative;
+      width: 100%;
+      min-height: 85vh;
+      background-size: cover;
+      background-position: left top;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hero-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding-left: 34%; /* Clear the guy in the background */
+      padding-right: 4%; /* Distance from right boundary */
+      gap: 4%;
+    }
+
+    .hero-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 400px; /* Keep text contained */
+    }
+
+    .hero-right {
+      flex: 0 0 650px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+    }
+
+    .hero-cat {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #000;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .hero-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      line-height: 1.05;
+      color: #000;
+      text-transform: uppercase;
+      margin: 0 0 6px;
+      white-space: nowrap;
+    }
+
+    .hero-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #000;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .hero-hr {
+      width: 40px;
+      height: 1px;
+      background: #000;
+      border: none;
+      margin: 20px 0;
+    }
+    
+    .hero-desc {
+      font-size: 0.8rem;
+      color: #353936;
+      max-width: 32ch;
+      margin-bottom: 24px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+
+    .hero-cta {
+      background: var(--forest);
+      color: #fff !important;
+      border: 1px solid var(--forest);
+      padding: 13px 24px;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .hero-cta:hover {
+      background: var(--gold-deep);
+      border-color: var(--gold-deep);
+    }
+
+    .hero-cta.outline {
+      background: transparent;
+      color: #000 !important;
+      border-color: #000;
+    }
+
+    .hero-cta.outline:hover {
+      background: rgba(0,0,0,0.05);
+    }
+
+    /* Designer Preview Card inside Hero */
+    .dc-card {
+      background: #fdfaf3;
+      border-radius: 8px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      width: 100%;
+      max-width: 650px;
+      overflow: hidden;
+    }
+
+    .dc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .dc-header-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      color: #000;
+    }
+    
+    .dc-header-sub {
+      font-size: 0.65rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .dc-body {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+    }
+
+    .dc-preview {
+      padding: 16px 24px;
+      background: #e3dec9;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .dc-preview-img {
+      width: 100%;
+      mix-blend-mode: multiply;
+      margin-bottom: 12px;
+    }
+    
+    .dc-thumbs {
+      display: flex;
+      gap: 12px;
+      margin-top: auto;
+    }
+    
+    .dc-thumb {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+    
+    .dc-thumb img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      mix-blend-mode: multiply;
+    }
+    
+    .dc-thumb.active img {
+      border-color: var(--ink);
+    }
+    
+    .dc-thumb span {
+      font-size: 0.55rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink);
+    }
+    
+    .dc-controls {
+      padding: 16px 24px;
+      background: #fdfaf3;
+      border-left: 1px solid var(--line);
+    }
+    
+    .dc-step {
+      margin-bottom: 12px;
+    }
+    
+    .dc-step-title {
+      font-size: 0.6rem;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: #000;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    .dc-step-title span {
+      font-size: 0.65rem;
+    }
+    
+    .dc-upload-box {
+      border: 1px dashed var(--muted);
+      border-radius: 4px;
+      padding: 14px;
+      text-align: center;
+      background: rgba(255,255,255,0.4);
+      cursor: pointer;
+    }
+    
+    .dc-placements {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .dc-place {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 4px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.4);
+    }
+    
+    .dc-place.active {
+      border-color: var(--ink);
+      background: #fff;
+    }
+    
+    .dc-place svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--muted);
+    }
+    
+    .dc-place.active svg {
+      stroke: var(--ink);
+    }
+    
+    .dc-place span {
+      font-size: 0.45rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    
+    .dc-colors {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .dc-colors span {
+      display: block;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .dc-colors span.active {
+      outline: 2px solid var(--ink);
+      outline-offset: 2px;
+    }
+    
+    .dc-input {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: rgba(255,255,255,0.4);
+      font-family: inherit;
+      font-size: 0.75rem;
+    }
+    
+    @media (max-width: 1100px) {
+      .hero-wrap {
+        grid-template-columns: 1fr;
+        padding: 40px 20px;
+      }
+      .hero-left {
+        padding-left: 0;
+        align-items: center;
+        text-align: center;
+      }
+      .hero-right {
+        justify-content: center;
+      }
+      .dc-body {
+        grid-template-columns: 1fr;
+      }
+      .dc-controls {
+        border-left: none;
+        border-top: 1px solid var(--line);
+      }
+    }
+
+    /* -------- CART DRAWER -------- */
+    .cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      display: none;
+      backdrop-filter: blur(2px);
+    }
+    
+    .cart-drawer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 400px;
+      max-width: 90vw;
+      height: 100%;
+      background: var(--panel);
+      box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      animation: slideInRight 0.3s forwards;
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--line);
+    }
+    
+    .cart-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    
+    .cart-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    
+    .cart-body {
+      flex: 1;
+      padding: 24px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--muted);
+    }
+    
+    .cart-footer {
+      padding: 24px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    
+    .btn-checkout {
+      display: block;
+      width: 100%;
+      background: var(--forest);
+      color: #fff;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+    
+    .btn-checkout:hover {
+      opacity: 0.9;
+    }
+    /* -------- END CART DRAWER -------- */
+    /* -------- END FULL BLEED HERO -------- */
+  </style>
 </head>
 <body>
 <header class="site-header">
-  <nav class="nav">
-    <a href="index.html" class="logo">
-      <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M4 12h9M13 12l-3-3M13 12l-3 3M17 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      THREADGAFF
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="">Home</a></li>
-      <li><a href="collections.html" class="">Design Library</a></li>
-      <li><a href="designer.html" class="">Custom Designer</a></li>
-      <li><a href="how-it-works.html" class="">How It Works</a></li>
-      <li><a href="solutions.html" class="active">Solutions</a></li>
-      <li><a href="about.html" class="">About</a></li>
-    </ul>
-    <a href="quote.html" class="btn btn-primary nav-cta">Get a Quote</a>
-  </nav>
-</header>
+    <div class="utility-strip">
+      <span class="utility-msg">Private Label Manufacturing &middot; MOQ From 150 Units &middot; Worldwide
+        Shipping</span>
+      <div class="utility-strip-links">
+        <a href="sample-pack.html">Sample Requests</a>
+        <a href="login.html">Client Login</a>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <img src="assets/images/logo.jpg" alt="Threadgaff"
+          style="width:50px; height:50px; border-radius:50%; object-fit:cover; display:inline-block; vertical-align:middle; margin-right:4px;">
+        THREADGAFF
+      </a>
+      <ul class="nav-links">
+        <li>
+          <a href="products.html">Products</a>
+          <div class="mega-menu">
+            <div class="mega-col">
+              <h5>By Category</h5>
+              <ul>
+                <li><a href="products/t-shirts.html">T-Shirts</a></li>
+                <li><a href="products/hoodies.html">Hoodies</a></li>
+                <li><a href="products/sweatshirts.html">Sweatshirts</a></li>
+                <li><a href="products/tracksuits.html">Tracksuits</a></li>
+                <li><a href="products/joggers.html">Joggers</a></li>
+                <li><a href="products/polo-shirts.html">Polo Shirts</a></li>
+                <li><a href="products/sets.html">Sets (Co-ords)</a></li>
+              </ul>
+            </div>
+            <div class="mega-col">
+              <h5>By Order Type</h5>
+              <ul>
+                <li><a href="order/own-label.html">Own-label range</a></li>
+                <li><a href="order/wholesale.html">Bulk &amp; wholesale</a></li>
+                <li><a href="order/merchandise.html">Branded merchandise</a></li>
+              </ul>
+            </div>
+            <div class="mega-footer">
+              <a href="sample-pack.html">Request a sample pack &rarr;</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="designer.html">Custom Designer</a></li>
+        <li><a href="how-we-work.html">How We Work</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#" style="color:#fff; display:flex; align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </a>
+        <a href="#" onclick="document.getElementById('cartOverlay').style.display='block'; return false;" style="color:#fff; display:flex; align-items:center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+        </a>
+      </div>
+
+    </nav>
+    
+    <!-- Cart Drawer Overlay -->
+    <div class="cart-overlay" id="cartOverlay">
+      <div class="cart-drawer">
+        <div class="cart-header">
+          <h3 class="cart-title">Your Order</h3>
+          <button class="cart-close" onclick="document.getElementById('cartOverlay').style.display='none';">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+        </div>
+        <div class="cart-body">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px; opacity:0.5;"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          <p style="margin:0 0 16px;">Your order request is currently empty.</p>
+          <a href="products.html" class="btn" style="background:var(--ink); color:#fff; padding:10px 20px; font-size:0.75rem; border-radius:2px; text-decoration:none;">Browse Products</a>
+        </div>
+        <div class="cart-footer">
+          <a href="#" class="btn-checkout" onclick="alert('Checkout functionality would proceed from here.'); return false;">Go to Checkout &rarr;</a>
+        </div>
+      </div>
+    </div>
+    
+  </header>
 
 <main>
   <section class="section-tight">
     <div class="wrap">
       <div class="section-head">
-        <h2>Solutions</h2>
-        <p>Four kinds of buyers order from Threadgaff, each for a different reason.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="solution-block" id="brands">
-    <div class="wrap solution-grid">
-      <div>
-        <div class="solution-meta">01 — BRANDS &amp; RETAILERS</div>
-        <h3 style="font-size:1.8rem;">Launch or extend a label without owning a factory floor</h3>
-      </div>
-      <div>
-        <p><strong>Who this is for:</strong> independent brand owners and retailers who need production capacity, not just a printer.</p>
-        <p><strong>What they typically order:</strong> first collection runs of 150–1,000 units across tees, hoodies and outerwear, often repeated seasonally.</p>
-        <p><strong>Why Threadgaff fits:</strong> the Designer doubles as a working spec sheet, so what you configure is exactly what gets cut. Low enough minimums to test a design before committing to a full range.</p>
-        <a href="designer.html?source=upload" class="btn btn-outline">Start Designing</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="solution-block" id="corporates">
-    <div class="wrap solution-grid">
-      <div>
-        <div class="solution-meta">02 — CORPORATES &amp; SCHOOLS</div>
-        <h3 style="font-size:1.8rem;">Uniforms and staff kits, sized correctly the first time</h3>
-      </div>
-      <div>
-        <p><strong>Who this is for:</strong> HR and admin teams ordering polos, uniforms or branded workwear for staff or students.</p>
-        <p><strong>What they typically order:</strong> polo and uniform runs of 200+ units, broken down across a full size range in one order.</p>
-        <p><strong>Why Threadgaff fits:</strong> the size and quantity table in the Designer produces a clean breakdown you can approve internally before it ever reaches us.</p>
-        <a href="quote.html" class="btn btn-outline">Talk to Us</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="solution-block" id="events">
-    <div class="wrap solution-grid">
-      <div>
-        <div class="solution-meta">03 — EVENTS &amp; TEAMS</div>
-        <h3 style="font-size:1.8rem;">Match kits and event merch, on a fixed date, no exceptions</h3>
-      </div>
-      <div>
-        <p><strong>Who this is for:</strong> sports teams, conference organisers and event producers working against a set delivery date.</p>
-        <p><strong>What they typically order:</strong> tees, caps and team kits, often with a name or number placement per unit.</p>
-        <p><strong>Why Threadgaff fits:</strong> the sample-approval step happens before bulk production starts, so the date risk is caught early rather than at delivery.</p>
-        <a href="designer.html?source=upload" class="btn btn-outline">Start Designing</a>
+        <h2>Who We Serve</h2>
+        <p style="max-width:60ch;">We're approaching three types of B2B customer. The site speaks to all three, even where the entry point — a product page, a "start your range" enquiry, a bulk order form — ends up looking slightly different for each. Our focus is entirely B2B; there is no consumer storefront.</p>
       </div>
     </div>
   </section>
@@ -433,63 +2233,94 @@ img{max-width:100%; display:block;}
   <section class="solution-block" id="importers">
     <div class="wrap solution-grid">
       <div>
-        <div class="solution-meta">04 — IMPORTERS &amp; STARTUPS</div>
-        <h3 style="font-size:1.8rem;">A production partner for a first run, not just a one-off sample</h3>
+        <div class="solution-meta">01 — IMPORTERS &amp; WHOLESALE BUYERS</div>
+        <h3 style="font-size:1.8rem;">One direct manufacturing relationship, instead of several middlemen</h3>
       </div>
       <div>
-        <p><strong>Who this is for:</strong> importers and early-stage founders sourcing from Pakistan for the first time, without an existing factory relationship.</p>
-        <p><strong>What they typically order:</strong> a sample run first, followed by a repeat order once the fit and finish are confirmed.</p>
-        <p><strong>Why Threadgaff fits:</strong> one point of contact from design through shipping, and a digital proof you can review before committing to a container-sized order.</p>
-        <a href="quote.html" class="btn btn-outline">Talk to Us</a>
+        <p><strong>Who this is for:</strong> businesses already importing or distributing clothing who want a direct manufacturing relationship rather than going through multiple middlemen.</p>
+        <p><strong>What they're looking for:</strong> to consolidate their sourcing with one partner, for consistent quality, pricing and lead times across every order.</p>
+        <p><strong>Why Threadgaff fits:</strong> one production relationship covers the range instead of several fragmented suppliers, with the same spec and the same quality checks applied every time.</p>
+        <a href="start.html" class="btn btn-outline">Talk to Us</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="solution-block" id="brands">
+    <div class="wrap solution-grid">
+      <div>
+        <div class="solution-meta">02 — BRANDS &amp; RETAILERS</div>
+        <h3 style="font-size:1.8rem;">Your own-label range, produced to a high standard, without owning a factory</h3>
+      </div>
+      <div>
+        <p><strong>Who this is for:</strong> established or growing clothing brands, online-first labels and independent boutique or retail stores who want their own-label range produced to a high standard, without owning a factory relationship themselves.</p>
+        <p><strong>Calibre we're aiming for:</strong> online-first, UK-focused labels such as ARNE, Percival, Represent, MKI Miyuki Zoku, Cole Buxton and Sunspel — built around the same core categories we manufacture. These names are illustrative of the standard we want to be a credible manufacturing partner for, not a target list to action directly.</p>
+        <p><strong>Why Threadgaff fits:</strong> the product range and design process are built to support a considered, premium own-label launch from day one.</p>
+        <a href="designer.html?source=upload" class="btn btn-outline">Start Designing</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="solution-block" id="events">
+    <div class="wrap solution-grid">
+      <div>
+        <div class="solution-meta">03 — EVENT &amp; CHARITY ORGANISERS</div>
+        <h3 style="font-size:1.8rem;">Branded clothing for a specific purpose, often sold on to fund the event itself</h3>
+      </div>
+      <div>
+        <p><strong>Who this is for:</strong> standalone buyers needing branded clothing for a specific purpose, often in smaller production runs — a charity fun run selling branded T-shirts, a festival or community event selling hoodies as merchandise, or a corporate away-day needing branded polos.</p>
+        <p><strong>What they typically order:</strong> a single run tied to a fixed date, frequently sold on by the organiser to help fund the event itself.</p>
+        <p><strong>Why Threadgaff fits:</strong> the sample-approval step happens before bulk production starts, so the date risk is caught early rather than at delivery.</p>
+        <a href="start.html" class="btn btn-outline">Talk to Us</a>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col">
-        <a href="index.html" class="logo" style="margin-bottom:14px;">
-          <svg class="logo-mark" viewBox="0 0 24 24" fill="none"><path d="M4 12h9M13 12l-3-3M13 12l-3 3M17 6v12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          THREADGAFF
-        </a>
-        <p style="color:var(--muted); font-size:0.92rem; max-width:34ch;">Private label apparel manufacturing, designed piece by piece and produced to order.</p>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="margin-bottom:14px;">
+            <img src="assets/images/logo.jpg" alt="Threadgaff"
+              style="width:44px; height:44px; border-radius:50%; object-fit:cover; display:inline-block; vertical-align:middle; margin-right:4px;">
+            THREADGAFF
+          </a>
+          <p style="color:var(--muted); font-size:0.92rem; max-width:34ch;">Private label apparel manufacturing,
+            designed piece by piece and produced to order.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Site</h5>
+          <ul>
+            <li><a href="products.html">Products</a></li>
+            <li><a href="designer.html">Custom Designer</a></li>
+            <li><a href="how-we-work.html">How We Work</a></li>
+            <li><a href="about.html">About Threadgaff</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Order Types</h5>
+          <ul>
+            <li><a href="order/own-label.html">Own-label range</a></li>
+            <li><a href="order/wholesale.html">Bulk &amp; wholesale</a></li>
+            <li><a href="order/merchandise.html">Branded merchandise</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Get in touch</h5>
+          <ul>
+            <li><a href="start.html">Start your range</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="mailto:hello@threadgaff.com">hello@threadgaff.com</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="footer-col">
-        <h5>Site</h5>
-        <ul>
-          <li><a href="collections.html">Design Library</a></li>
-          <li><a href="designer.html">Custom Designer</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="about.html">About Threadgaff</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul>
-          <li><a href="solutions.html#brands">Brands &amp; Retailers</a></li>
-          <li><a href="solutions.html#corporates">Corporates &amp; Schools</a></li>
-          <li><a href="solutions.html#events">Events &amp; Teams</a></li>
-          <li><a href="solutions.html#importers">Importers &amp; Startups</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Get in touch</h5>
-        <ul>
-          <li><a href="quote.html">Request a quote</a></li>
-          <li><a href="mailto:hello@threadgaff.com">hello@threadgaff.com</a></li>
-          <li><a href="tel:+920000000000">+92 000 000 0000</a></li>
-        </ul>
+      <hr class="hr">
+      <div class="footer-bottom" style="margin-top:22px;">
+        <span>© 2026 Threadgaff. Demo template — not a live production site.</span>
+        <span>Lahore, Pakistan</span>
       </div>
     </div>
-    <hr class="hr">
-    <div class="footer-bottom" style="margin-top:22px;">
-      <span>© 2026 Threadgaff. Demo template — not a live production site.</span>
-      <span>Lahore, Pakistan</span>
-    </div>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
