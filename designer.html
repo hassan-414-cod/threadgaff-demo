@@ -2295,7 +2295,7 @@
     }
 
     .dr-header {
-      padding: 30px;
+      padding: 20px 26px;
       border-bottom: 1px solid #e8e4db;
       display: flex;
       justify-content: space-between;
@@ -2303,9 +2303,16 @@
       background: var(--paper);
       flex-wrap: wrap;
       gap: 16px;
+      flex-shrink: 0;
     }
-    .dr-header h4 { font-size: 0.75rem; color: var(--muted); }
-    .dr-header span { font-size: 0.7rem; font-weight: 700; }
+    .dr-header h4 { font-size: 0.7rem; color: var(--muted); letter-spacing:0.06em; }
+
+    .dr-footer {
+      flex-shrink: 0;
+      padding: 16px 26px;
+      border-top: 1px solid #e8e4db;
+      background: var(--paper);
+    }
 
     .dr-body {
       padding: 22px 26px;
@@ -2847,8 +2854,6 @@
             <span style="font-weight:700; font-size:0.95rem; color:#fff;">--</span>
           </div>
 
-          <button id="checkoutBtn" style="width:100%; padding:12px; font-size:0.88rem; font-weight:700; cursor:pointer; border-radius:6px; border:none; background:#fff; color:var(--ink); letter-spacing:0.04em;">SUBMIT ENQUIRY &rarr;</button>
-
           <!-- Hidden elements required by JS -->
           <div style="display:none;">
              <span id="capSpec">TEE — CREW — SHORT — INK BLACK</span>
@@ -2858,6 +2863,13 @@
         </div>
 
       </div>
+
+      <!-- STICKY CHECKOUT BUTTON - always visible at bottom -->
+      <div class="dr-footer" style="padding:16px; border-top:1px solid var(--line); background:#f9f9f7;">
+        <button id="checkoutBtn" style="width:100%; padding:14px; font-size:0.92rem; font-weight:700; cursor:pointer; border-radius:6px; border:none; background:var(--ink); color:#fff; letter-spacing:0.06em; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">SUBMIT ENQUIRY &rarr;</button>
+        <p style="margin:8px 0 0; font-size:0.68rem; color:var(--muted); text-align:center;">We'll review your spec and reply within 24 hours</p>
+      </div>
+
     </div>
 </main>
 
