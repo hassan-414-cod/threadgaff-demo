@@ -2288,6 +2288,10 @@
       padding: 0;
       display: flex;
       flex-direction: column;
+      height: calc(100vh - 120px);
+      position: sticky;
+      top: 120px;
+      overflow: hidden;
     }
 
     .dr-header {
@@ -2305,6 +2309,8 @@
 
     .dr-body {
       padding: 22px 26px;
+      overflow-y: auto;
+      flex: 1;
     }
 
     .config-block {
