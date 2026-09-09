@@ -1,4 +1,4 @@
-﻿/**
+/**
  * garment-configs.js
  * Central config for Threadgaff Custom Designer.
  * Add a new key to GARMENT_CONFIGS to support a new product.
@@ -18,7 +18,7 @@ var GARMENT_CONFIGS = {
       polo: [{id:'polo-collar',label:'Classic Collar',disabled:true}]
     },
     sizeChart: {
-      tee: { XS:{chest:35,length:26}, S:{chest:37,length:27}, M:{chest:39,length:28}, L:{chest:41,length:29}, XL:{chest:43,length:30}, XXL:{chest:45,length:31} },
+      tee: { XS:{chest:35,length:26,sleeve:7.5}, S:{chest:37,length:27,sleeve:8}, M:{chest:39,length:28,sleeve:8.5}, L:{chest:41,length:29,sleeve:9}, XL:{chest:43,length:30,sleeve:9.5}, XXL:{chest:45,length:31,sleeve:10} },
       polo: { S:{chest:37,length:27,sleeve:8}, M:{chest:39,length:28,sleeve:8.5}, L:{chest:41,length:29,sleeve:9}, XL:{chest:43,length:30,sleeve:9.5}, XXL:{chest:45,length:31,sleeve:10} }
     }
   },

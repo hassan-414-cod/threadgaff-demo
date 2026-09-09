@@ -1542,6 +1542,17 @@
       border-radius: var(--radius-s);
     }
 
+    /* Hide number spinners globally for qty inputs */
+    .qty-table input[type="number"]::-webkit-outer-spin-button,
+    .qty-table input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    .qty-table input[type="number"] {
+      -moz-appearance: textfield;
+      appearance: textfield;
+    }
+
     .qty-total {
       display: flex;
       justify-content: space-between;
@@ -2286,52 +2297,88 @@
       justify-content: space-between;
       align-items: center;
       background: var(--paper);
+      flex-wrap: wrap;
+      gap: 16px;
     }
     .dr-header h4 { font-size: 0.75rem; color: var(--muted); }
     .dr-header span { font-size: 0.7rem; font-weight: 700; }
 
     .dr-body {
-      padding: 30px;
+      padding: 22px 26px;
     }
 
     .config-block {
-      margin-bottom: 32px;
+      margin-bottom: 20px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
     }
+    .config-block:last-child { border-bottom: none; }
     .config-label {
-      font-size: 0.95rem;
+      font-size: 0.7rem;
       font-weight: 700;
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
     }
-    .config-desc {
+
+    /* Product Description Card */
+    .product-desc-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+    .product-desc-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      color: var(--ink);
+    }
+    .product-desc-card p {
       font-size: 0.8rem;
       color: var(--muted);
-      margin-bottom: 12px;
+      margin: 0 0 10px;
+      line-height: 1.55;
+    }
+    .product-desc-specs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .product-desc-specs span {
+      font-size: 0.68rem;
+      font-weight: 600;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 3px 9px;
+      color: var(--ink);
     }
 
     .opt-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
     
     .opt-btn {
       border: 1px solid var(--line);
       background: #fff;
-      border-radius: 6px;
-      padding: 8px 12px;
-      text-align: left;
+      border-radius: 20px;
+      padding: 5px 12px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 5px;
       font-weight: 500;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       color: var(--ink);
-      transition: all 0.2s;
+      transition: all 0.18s;
       cursor: pointer;
+      white-space: nowrap;
     }
-    .opt-btn:hover { border-color: var(--muted); }
+    .opt-btn:hover { border-color: var(--ink); background: var(--paper); }
     .opt-btn.sel {
       background: var(--ink);
       color: #fff;
@@ -2340,22 +2387,22 @@
     .opt-btn.sel svg path, .opt-btn.sel svg line, .opt-btn.sel svg polyline {
       stroke: #fff;
     }
-    .opt-btn[disabled] { opacity: 0.5; cursor: not-allowed; }
+    .opt-btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 
-    .icon-svg { width: 24px; height: 24px; flex-shrink: 0; }
+    .icon-svg { width: 16px; height: 16px; flex-shrink: 0; }
 
     /* Colors */
     .color-swatches {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       flex-wrap: wrap;
       align-items: center;
     }
     .c-swatch {
-      width: 32px;
-      height: 32px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.12);
       cursor: pointer;
       position: relative;
     }
@@ -2367,9 +2414,9 @@
       border-radius: 50%;
     }
     .c-swatch-add {
-      width: 32px; height: 32px; border-radius: 50%; border: 1px dashed var(--muted);
+      width: 26px; height: 26px; border-radius: 50%; border: 1px dashed var(--muted);
       display: flex; align-items: center; justify-content: center; cursor: pointer;
-      color: var(--muted); font-size: 1.2rem; line-height: 1;
+      color: var(--muted); font-size: 1rem; line-height: 1;
     }
 
     /* Upload Box */
@@ -2377,29 +2424,29 @@
       border: 1px dashed var(--line);
       background: #fff;
       border-radius: 8px;
-      padding: 24px;
+      padding: 16px 18px;
       display: flex;
-      gap: 20px;
+      gap: 14px;
       align-items: center;
       cursor: pointer;
     }
     .upload-box:hover { border-color: var(--forest); }
     .upload-icon {
-      width: 48px; height: 48px; border-radius: 8px; background: var(--paper);
-      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; border-radius: 6px; background: var(--paper);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
-    .upload-text strong { display: block; font-size: 0.9rem; margin-bottom: 2px; }
-    .upload-text span { font-size: 0.75rem; color: var(--muted); }
+    .upload-text strong { display: block; font-size: 0.82rem; margin-bottom: 2px; }
+    .upload-text span { font-size: 0.7rem; color: var(--muted); }
 
     .guidelines {
-      margin-top: 16px;
+      margin-top: 10px;
       background: var(--paper);
-      padding: 16px;
+      padding: 10px 14px;
       border-radius: 6px;
     }
-    .guidelines h5 { display: flex; align-items: center; gap: 6px; font-size: 0.7rem; margin-bottom: 8px; }
-    .guidelines ul { margin: 0; padding-left: 16px; font-size: 0.75rem; color: var(--muted); }
-    .guidelines li { margin-bottom: 4px; }
+    .guidelines h5 { display: flex; align-items: center; gap: 6px; font-size: 0.65rem; margin-bottom: 6px; color: var(--muted); }
+    .guidelines ul { margin: 0; padding-left: 14px; font-size: 0.7rem; color: var(--muted); }
+    .guidelines li { margin-bottom: 3px; }
 
     /* Show standard header inside sticky layout */
     .site-header { display: block !important; }
@@ -2444,13 +2491,13 @@
             <div class="mega-col">
               <h5>By Category</h5>
               <ul>
-                <li><a href="products/t-shirts.html">T-Shirts</a></li>
-                <li><a href="products/hoodies.html">Hoodies</a></li>
-                <li><a href="products/sweatshirts.html">Sweatshirts</a></li>
-                <li><a href="products/tracksuits.html">Tracksuits</a></li>
-                <li><a href="products/joggers.html">Joggers</a></li>
-                <li><a href="products/polo-shirts.html">Polo Shirts</a></li>
-                <li><a href="products/sets.html">Sets (Co-ords)</a></li>
+                <li><a href="products.html?collection=t-shirts">T-Shirts</a></li>
+                <li><a href="products.html?collection=hoodies">Hoodies</a></li>
+                <li><a href="products.html?collection=sweatshirts">Sweatshirts</a></li>
+                <li><a href="products.html?collection=tracksuits">Tracksuits</a></li>
+                <li><a href="products.html?collection=joggers">Joggers</a></li>
+                <li><a href="products.html?collection=polo-shirts">Polo Shirts</a></li>
+                <li><a href="products.html?collection=sets">Sets (Co-ords)</a></li>
               </ul>
             </div>
             <div class="mega-col">
@@ -2620,45 +2667,55 @@
     <div class="designer-right">
       <div class="dr-header">
         <div>
-          <h4>CONFIGURE YOUR PRODUCTION ORDER</h4>
+          <h4>CONFIGURE YOUR ORDER</h4>
         </div>
         <!-- Compact sizes & qty bar at the top -->
         <div style="display:flex; align-items:center; gap:6px;">
-          <span style="font-size:0.65rem; font-weight:700; color:var(--muted); margin-right:4px;">QTY:</span>
-          <div class="qty-table" style="display:flex; gap:5px;">
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">XS</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+          <span style="font-size:0.6rem; font-weight:700; color:var(--muted); margin-right:4px;">QTY:</span>
+          <div class="qty-table" style="display:flex; gap:4px;">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">XS</span>
+              <input type="number" min="0" value="0" data-size="XS" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">S</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">S</span>
+              <input type="number" min="0" value="0" data-size="S" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">M</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">M</span>
+              <input type="number" min="0" value="0" data-size="M" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">L</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">L</span>
+              <input type="number" min="0" value="0" data-size="L" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">XL</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">XL</span>
+              <input type="number" min="0" value="0" data-size="XL" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
-            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;">
-              <span style="font-size:0.6rem; font-weight:700; color:var(--muted);">XXL</span>
-              <input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">
+            <div style="background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;">
+              <span style="font-size:0.55rem; font-weight:700; color:var(--muted);">XXL</span>
+              <input type="number" min="0" value="0" data-size="XXL" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">
             </div>
           </div>
         </div>
       </div>
       <div class="dr-body">
-        
-        <!-- 1. Garment Type -->
+
+        <!-- Product Description Card (populated by JS) -->
+        <div class="product-desc-card" id="productDescCard">
+          <h3 id="productDescTitle">Custom Garment</h3>
+          <p id="productDescBody">Configure every detail — fabric, colour, branding placement — then submit your enquiry or checkout below.</p>
+          <div class="product-desc-specs" id="productDescSpecs">
+            <span>MOQ: 50 pcs</span>
+            <span>Lead: 3–4 Weeks</span>
+            <span>Sampling Available</span>
+          </div>
+        </div>
+
+        <!-- Garment Type -->
         <div class="config-block">
-          <div class="config-label">1. GARMENT TYPE</div>
-          <div class="config-desc">Choose the base style for your product.</div>
+          <div class="config-label">GARMENT</div>
           <div class="opt-grid" id="garmentRow">
             <button class="opt-btn sel" data-garment="tee">
               <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z"/><path d="M6,8 L2,12 L5,16 L9,11"/><path d="M18,8 L22,12 L19,16 L15,11"/></svg>
@@ -2670,47 +2727,14 @@
             </button>
             <button class="opt-btn" data-garment="polo">
               <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z"/><path d="M12,4 L12,10"/><path d="M9,4 L12,8 L15,4"/></svg>
-              Polo Shirt
+              Polo
             </button>
           </div>
         </div>
 
-        <!-- 2. Sleeve Length -->
+        <!-- Base Colour -->
         <div class="config-block">
-          <div class="config-label">2. SLEEVE LENGTH</div>
-          <div class="config-desc">Select your preferred sleeve length.</div>
-          <div class="opt-grid" id="sleeveRow">
-            <button class="opt-btn sel" data-sleeve="short">
-              Short Sleeve
-            </button>
-            <button class="opt-btn" data-sleeve="long">
-              Long Sleeve
-            </button>
-          </div>
-          <p id="sleeveNote" style="display:none; margin:8px 0 0; font-size:0.75rem; color:var(--muted);">Hoodies are long sleeve only.</p>
-        </div>
-
-        <!-- 3. Neckline -->
-        <div class="config-block">
-          <div class="config-label" id="collarLabel">3. NECKLINE</div>
-          <div class="config-desc">Choose a neckline style.</div>
-          <div class="opt-grid" id="collarRowTee">
-            <button class="opt-btn sel" data-neckline="crew">Crew Neck</button>
-            <button class="opt-btn" data-neckline="vneck">V-Neck</button>
-          </div>
-          <div class="opt-grid" id="collarRowHoodie" style="display:none;">
-            <button class="opt-btn sel" data-hoodcollar="pullover">Pullover Hood</button>
-            <button class="opt-btn" data-hoodcollar="zip">Zip-Up Hood</button>
-          </div>
-          <div class="opt-grid" id="collarRowPolo" style="display:none;">
-            <button class="opt-btn sel" disabled>Classic Collar</button>
-          </div>
-        </div>
-
-        <!-- 4. Base Colour -->
-        <div class="config-block">
-          <div class="config-label">4. BASE COLOUR</div>
-          <div class="config-desc">Pick a base colour for your garment.</div>
+          <div class="config-label">BASE COLOUR</div>
           <div class="color-swatches" id="colorRow">
             <div class="c-swatch swatch sel" data-color="#1c1c1c" style="background:#1c1c1c;" title="Ink Black"></div>
             <div class="c-swatch swatch" data-color="#f4f2ec" style="background:#f4f2ec;" title="Chalk White"></div>
@@ -2720,94 +2744,104 @@
             <div class="c-swatch swatch" data-color="#a04726" style="background:#a04726;" title="Rust"></div>
             <div class="c-swatch swatch" data-color="#c9b58a" style="background:#c9b58a;" title="Sand"></div>
             <div class="c-swatch swatch" data-color="#4a4a46" style="background:#4a4a46;" title="Charcoal Marl"></div>
-            <div class="c-swatch-add">+</div>
+            <div class="c-swatch-add" title="Request custom colour">+</div>
           </div>
         </div>
 
-        <!-- 5. Branding Placement -->
+        <!-- Sleeve Length -->
         <div class="config-block">
-          <div class="config-label">5. BRANDING PLACEMENT</div>
-          <div class="config-desc">Where would you like to add your logo or artwork?</div>
-          <div class="opt-grid" id="placementRow" style="grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
-            <button class="opt-btn sel" data-placement="front-chest">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z"/><rect x="14" y="9" width="3" height="3"/></svg>
-              Front Chest
-            </button>
-            <button class="opt-btn" data-placement="back-centre">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z"/><rect x="9" y="10" width="6" height="6"/></svg>
-              Back
-            </button>
-            <button class="opt-btn" data-placement="left-sleeve">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6,22 L6,8 L9,4 L15,4 L18,8 L18,22 Z"/><rect x="19" y="10" width="2" height="4"/></svg>
-              Sleeve
-            </button>
-            <button class="opt-btn" data-placement="full-front">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="10" y="4" width="4" height="4"/><path d="M8,8 L16,8 L16,12 L8,12 Z"/></svg>
-              Neck Label
-            </button>
-            <button class="opt-btn" data-placement="full-front">
-              <svg class="icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4,22 L4,8 L12,2 L20,8 L20,22 Z"/></svg>
-              Hem Tag
-            </button>
+          <div class="config-label">SLEEVE</div>
+          <div class="opt-grid" id="sleeveRow">
+            <button class="opt-btn sel" data-sleeve="short">Short</button>
+            <button class="opt-btn" data-sleeve="long">Long</button>
+          </div>
+          <p id="sleeveNote" style="display:none; margin:6px 0 0; font-size:0.7rem; color:var(--muted);">Hoodies are long sleeve only.</p>
+        </div>
+
+        <!-- Neckline -->
+        <div class="config-block">
+          <div class="config-label" id="collarLabel">NECKLINE</div>
+          <div class="opt-grid" id="collarRowTee">
+            <button class="opt-btn sel" data-neckline="crew">Crew</button>
+            <button class="opt-btn" data-neckline="vneck">V-Neck</button>
+          </div>
+          <div class="opt-grid" id="collarRowHoodie" style="display:none;">
+            <button class="opt-btn sel" data-hoodcollar="pullover">Pullover</button>
+            <button class="opt-btn" data-hoodcollar="zip">Zip-Up</button>
+          </div>
+          <div class="opt-grid" id="collarRowPolo" style="display:none;">
+            <button class="opt-btn sel" disabled>Classic Collar</button>
           </div>
         </div>
 
-        <!-- 6. Upload Artwork (keeping existing IDs but styling like the screenshot) -->
+        <!-- Branding Placement -->
         <div class="config-block">
-          <div class="config-label">6. UPLOAD LOGO / ARTWORK</div>
-          <div class="config-desc">Add your logo, artwork or design file.</div>
+          <div class="config-label">BRANDING PLACEMENT</div>
+          <div class="opt-grid" id="placementRow">
+            <button class="opt-btn sel" data-placement="front-chest">Front Chest</button>
+            <button class="opt-btn" data-placement="back-centre">Back Centre</button>
+            <button class="opt-btn" data-placement="left-sleeve">Sleeve</button>
+            <button class="opt-btn" data-placement="full-front">Neck Label</button>
+            <button class="opt-btn" data-placement="hem-tag">Hem Tag</button>
+          </div>
+        </div>
+
+        <!-- Upload Artwork -->
+        <div class="config-block">
+          <div class="config-label">LOGO / ARTWORK</div>
           
           <label class="upload-box" id="uploadDrop">
             <div class="upload-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
             </div>
             <div class="upload-text">
-              <strong>Drag and drop your file here</strong>
-              <span>or click to browse<br>Supports PNG, SVG, AI, PDF (Max 10MB)</span>
+              <strong>Drag &amp; drop or click to browse</strong>
+              <span>PNG, SVG, AI, PDF — Max 10MB</span>
             </div>
             <input type="file" id="fileInput" accept="image/*" style="display:none;">
           </label>
-          <div class="file-name" id="fileName" style="margin-top:8px; font-size:0.8rem; font-weight:600;"></div>
+          <div class="file-name" id="fileName" style="margin-top:6px; font-size:0.78rem; font-weight:600;"></div>
 
           <div class="guidelines">
             <h5>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-              GUIDELINES
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              TIPS
             </h5>
             <ul>
-              <li>High resolution files work best</li>
-              <li>Vector files (AI, SVG, PDF) preferred</li>
+              <li>High resolution (300dpi+) for best results</li>
+              <li>Vector files (AI, SVG) preferred</li>
               <li>Transparent background (PNG)</li>
-              <li>We'll review your artwork after submission</li>
             </ul>
           </div>
         </div>
 
-        <!-- 8. Order Summary -->
-        <div class="config-block" style="margin-top:40px; padding:24px; background:var(--forest); color:#fff; border:1px solid var(--forest); border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.08);">
-          <div style="font-size:1.1rem; font-weight:700; margin-bottom:16px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:12px;">ORDER SUMMARY</div>
+        <!-- Order Summary -->
+        <div class="config-block" style="border-bottom:none; margin-top:8px; padding:20px; background:var(--forest); color:#fff; border-radius:10px; box-shadow:0 4px 14px rgba(0,0,0,0.12);">
+          <div style="font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:14px; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:10px;">Order Summary</div>
           
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
-            <span style="color:rgba(255,255,255,0.7);">Product Type:</span>
-            <span style="font-weight:600;"><span id="sumGarment">T-Shirt</span> &middot; <span id="sumCollar">Crew Neck</span> &middot; <span id="sumSleeve">Short</span></span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.8rem;">
+            <span style="color:rgba(255,255,255,0.6);">Product</span>
+            <span style="font-weight:600; text-align:right;"><span id="sumGarment">T-Shirt</span> &middot; <span id="sumCollar">Crew</span> &middot; <span id="sumSleeve">Short</span></span>
           </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
-            <span style="color:rgba(255,255,255,0.7);">Base Colour:</span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.8rem;">
+            <span style="color:rgba(255,255,255,0.6);">Colour</span>
             <span id="sumColor" style="font-weight:600;">Ink Black</span>
           </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:12px; font-size:0.85rem;">
-            <span style="color:rgba(255,255,255,0.7);">Branding:</span>
-            <span style="font-weight:600; text-align:right;"><span id="sumPlacement">Front Chest</span><br><span id="sumSource" style="font-size:0.75rem; color:rgba(255,255,255,0.7); font-weight:400;">Upload — no file yet</span></span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px; font-size:0.8rem;">
+            <span style="color:rgba(255,255,255,0.6);">Branding</span>
+            <span style="font-weight:600; text-align:right;"><span id="sumPlacement">Front Chest</span><br><span id="sumSource" style="font-size:0.7rem; color:rgba(255,255,255,0.55); font-weight:400;">Upload — no file yet</span></span>
           </div>
-          <div style="display:flex; justify-content:space-between; margin-bottom:16px; font-size:0.85rem;">
-            <span style="color:rgba(255,255,255,0.7);">Total Units:</span>
-            <span id="sumQty" style="font-weight:600;">0 units</span>
+          <div style="display:flex; justify-content:space-between; margin-bottom:14px; font-size:0.8rem; align-items:center;">
+            <span style="color:rgba(255,255,255,0.6);">Total Units</span>
+            <span id="sumQty" style="font-weight:700; font-size:1rem;">0 units</span>
           </div>
           
-          <div style="border-top:1px dashed rgba(255,255,255,0.3); padding-top:16px; display:flex; justify-content:space-between; align-items:center;">
-            <span style="font-weight:700; font-size:0.9rem;">Estimated Cost</span>
-            <span style="font-weight:700; font-size:1.1rem; color:#fff;">--</span>
+          <div style="border-top:1px dashed rgba(255,255,255,0.25); padding-top:12px; display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+            <span style="font-weight:700; font-size:0.82rem;">Estimated Cost</span>
+            <span style="font-weight:700; font-size:0.95rem; color:#fff;">--</span>
           </div>
+
+          <button id="checkoutBtn" style="width:100%; padding:12px; font-size:0.88rem; font-weight:700; cursor:pointer; border-radius:6px; border:none; background:#fff; color:var(--ink); letter-spacing:0.04em;">SUBMIT ENQUIRY &rarr;</button>
 
           <!-- Hidden elements required by JS -->
           <div style="display:none;">
@@ -2815,12 +2849,6 @@
              <span id="capPlacement">FRONT CHEST</span>
              <span id="qtyTotal">0</span>
           </div>
-        </div>
-
-        <!-- 9. Action Buttons -->
-        <div style="margin-top:24px; padding:24px; background:#fff; border:1px solid var(--line); border-radius:12px; display:flex; flex-direction:column; gap:12px;">
-          <button class="btn btn-primary" style="width:100%; padding:14px; font-size:1rem; font-weight:700; cursor:pointer;">CHECKOUT</button>
-          <a href="start.html" class="btn btn-outline" style="width:100%; padding:14px; font-size:1rem; font-weight:700; text-align:center; border: 1px solid var(--ink); color: var(--ink); text-decoration:none; display:inline-block;">GET A QUOTE</a>
         </div>
 
       </div>
@@ -2887,6 +2915,12 @@
     var _subEl = document.getElementById('categorySubtitle');
     if (_subEl) _subEl.textContent = _cfg.subtitle;
 
+    // Populate product description card
+    var _descTitle = document.getElementById('productDescTitle');
+    var _descBody = document.getElementById('productDescBody');
+    if (_descTitle) _descTitle.textContent = _cfg.title;
+    if (_descBody) _descBody.textContent = _cfg.subtitle;
+
     // Rebuild garment type buttons
     var _garmentRow = document.getElementById('garmentRow');
     if (_garmentRow && _cfg.garmentTypes.length) {
@@ -2902,13 +2936,16 @@
 
     // Rebuild qty size slots using config sizes
     var _qtySlotsTop = document.querySelector('.dr-header .qty-table');
-    if (_qtySlotsTop) {
-      _qtySlotsTop.innerHTML = '';
+    if (_qtySlotsTop) _qtySlotsTop.innerHTML = '';
+    
+    if (_cfg && _cfg.sizes) {
       _cfg.sizes.forEach(function(sz) {
-        var d = document.createElement('div');
-        d.style.cssText = 'background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:4px 6px; min-width:38px;';
-        d.innerHTML = '<span style="font-size:0.6rem; font-weight:700; color:var(--muted);">' + sz + '</span><input type="number" min="0" value="0" style="width:32px; border:none; text-align:center; font-weight:600; font-size:0.8rem; outline:none; background:transparent; color:var(--ink);">';
-        _qtySlotsTop.appendChild(d);
+        if (_qtySlotsTop) {
+          var dTop = document.createElement('div');
+          dTop.style.cssText = 'background:#fff; border:1px solid var(--line); border-radius:5px; display:flex; flex-direction:column; align-items:center; padding:3px 5px; min-width:34px;';
+          dTop.innerHTML = '<span style="font-size:0.55rem; font-weight:700; color:var(--muted);">' + sz + '</span><input type="number" min="0" value="0" data-size="' + sz + '" class="sync-qty" style="width:30px; padding:0; margin:0; border:none; text-align:center; font-weight:700; font-size:0.85rem; outline:none; background:transparent; color:var(--ink); line-height:1.2;">';
+          _qtySlotsTop.appendChild(dTop);
+        }
       });
     }
 
@@ -2964,12 +3001,12 @@
   var GRID_INCHES = 60;
   var SIZE_CHARTS = {
     tee: {
-      'XS': { chest: 35, length: 26 },
-      'S':  { chest: 37, length: 27 },
-      'M':  { chest: 39, length: 28 },
-      'L':  { chest: 41, length: 29 },
-      'XL': { chest: 43, length: 30 },
-      'XXL':{ chest: 45, length: 31 }
+      'XS': { chest: 35, length: 26, sleeve: 7.5 },
+      'S':  { chest: 37, length: 27, sleeve: 8 },
+      'M':  { chest: 39, length: 28, sleeve: 8.5 },
+      'L':  { chest: 41, length: 29, sleeve: 9 },
+      'XL': { chest: 43, length: 30, sleeve: 9.5 },
+      'XXL':{ chest: 45, length: 31, sleeve: 10 }
     },
     polo: {
       'S':  { chest: 37, length: 27 },
@@ -3111,7 +3148,8 @@
   function updateQty(){
     var total = 0;
     var breakdown = [];
-    all('.qty-table input').forEach(function(inp){ 
+    var countInputs = document.querySelectorAll('.dr-header .qty-table input');
+    countInputs.forEach(function(inp){ 
       var val = parseInt(inp.value, 10) || 0;
       total += val;
       if(val > 0) {
@@ -3301,15 +3339,23 @@
   });
 
   // quantities
-  all('.qty-table input').forEach(function(inp){
-    inp.addEventListener('input', function(){ updateQty(); });
+  all('.sync-qty').forEach(function(inp){
+    inp.addEventListener('input', function(){
+      var sz = this.getAttribute('data-size');
+      var val = this.value;
+      all('.sync-qty[data-size="' + sz + '"]').forEach(function(other){
+        if(other !== inp) other.value = val;
+      });
+      updateQty(); 
+    });
+    inp.addEventListener('focus', function(){ this.select(); });
+    inp.addEventListener('blur', function(){ if(this.value === '') this.value = '0'; updateQty(); });
   });
 
-  // request quote -> pass spec through the URL
-  $('requestQuoteBtn').addEventListener('click', function(e){
+  // checkout -> pass spec through the URL
+  $('checkoutBtn').addEventListener('click', function(e){
     e.preventDefault();
-    var total = 0;
-    all('.qty-table input').forEach(function(inp){ total += (parseInt(inp.value, 10) || 0); });
+    var total = parseInt($('qtyTotal').textContent, 10) || 0;
     var params = new URLSearchParams();
     params.set('garment', $('sumGarment').textContent);
     params.set('collar', $('sumCollar').textContent);
@@ -3339,7 +3385,6 @@
   }
 
   render();
-})();
 
 </script>
 </body>
