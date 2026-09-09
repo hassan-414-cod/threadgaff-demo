@@ -1,0 +1,153 @@
+/* ============================================================
+   THREADGAFF - GLOBAL MOBILE RESPONSIVE
+   Injected into every page. Overrides at <= 768px.
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  body { font-size: 15px; overflow-x: hidden; }
+  * { box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+
+  /* UTILITY STRIP */
+  .utility-strip { padding: 6px 16px; font-size: 0.6rem; }
+  .utility-strip-links { display: none !important; }
+
+  /* NAV */
+  .nav {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 18px !important;
+    gap: 0 !important;
+  }
+  .nav-links { display: none !important; }
+  .nav-actions { display: none !important; }
+  .hamburger { display: flex !important; }
+
+  /* WRAP / SECTIONS */
+  .wrap { padding: 0 18px !important; }
+
+  /* ALL GRIDS - 1 COLUMN */
+  .hero-split, .bottom-block, .two-col, .hero-grid, .path-grid,
+  .solution-grid, .designer-layout, .hero-wrap, .footer-grid,
+  .segment-list, .tile-grid, .stat-row, .data-row, .proof-grid,
+  .values-grid, .step-grid, .moq-grid, .service-grid, .fabric-grid,
+  .timeline-grid {
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  /* PRODUCT GRID */
+  .prod-grid, .prod-grid.extended {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* HERO */
+  .hero-content, .hero-left, .hero-wrap {
+    padding: 48px 18px 32px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+  .hero-right, .hero-img { display: none !important; }
+  .hero-actions, .btn-group {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+  }
+  .hero-actions a, .btn-group a, .hero-actions button {
+    text-align: center !important;
+    width: 100% !important;
+  }
+
+  /* HEADINGS */
+  h1, .h1 { font-size: clamp(2rem, 8vw, 3rem) !important; }
+  h2, .h2 { font-size: clamp(1.5rem, 6vw, 2.2rem) !important; }
+  h3, .h3 { font-size: clamp(1.1rem, 5vw, 1.6rem) !important; }
+
+  /* PRODUCT CARDS */
+  .product-card, .prod-card { margin-bottom: 16px !important; }
+
+  /* CATEGORY BUTTONS */
+  .cat-btns, .filter-bar {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+  }
+  .cat-btn { font-size: 0.72rem !important; padding: 6px 14px !important; }
+
+  /* DESIGNER SPLIT */
+  .designer-split {
+    flex-direction: column !important;
+    min-height: unset !important;
+  }
+  .designer-left {
+    flex: none !important;
+    width: 100% !important;
+    padding: 24px 18px !important;
+  }
+  .designer-left .preview-box {
+    height: 280px !important;
+    min-height: 240px !important;
+  }
+  .designer-right {
+    flex: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+    border-left: none !important;
+    border-top: 2px solid #e8e4db !important;
+    overflow: visible !important;
+  }
+  .dr-header {
+    padding: 14px 18px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .dr-body { padding: 16px 18px !important; max-height: none !important; overflow: visible !important; }
+  .dr-footer { padding: 14px 18px !important; }
+
+  /* QTY TABLE */
+  .qty-table { flex-wrap: wrap !important; gap: 6px !important; }
+
+  /* FOOTER */
+  .footer-grid { gap: 28px !important; }
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 6px !important;
+    text-align: center !important;
+  }
+  .site-footer .wrap { padding: 40px 18px 24px !important; }
+
+  /* MISC CARDS */
+  .path-card, .solution-card, .tile, .data-card, .values-item {
+    margin-bottom: 16px !important;
+  }
+
+  /* HIDE DECORATIVE */
+  .floating-label, .scroll-indicator, .side-bar-label { display: none !important; }
+
+  /* BUTTONS */
+  .btn-primary, .btn-outline {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+}
+
+/* TABLET 769px-1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .prod-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .hero-split, .two-col { grid-template-columns: 1fr !important; }
+  .designer-split { flex-direction: column !important; }
+  .designer-left { flex: none !important; width: 100% !important; }
+  .designer-right {
+    flex: none !important;
+    width: 100% !important;
+    height: auto !important;
+    position: static !important;
+  }
+}
